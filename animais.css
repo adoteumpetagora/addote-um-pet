@@ -1,0 +1,514 @@
+/* =========================================
+   CONFIGURAÇÕES GERAIS
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #faf7f1;
+    color: #292929;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    width: 100%;
+    height: 74px;
+
+    background: #fffdf9;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 42px;
+
+    border-bottom: 1px solid #eee7dc;
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f9c0b6;
+
+    border-radius: 50%;
+
+    font-size: 23px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 15px;
+    line-height: 16px;
+}
+
+
+/* MENU */
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.menu a {
+    text-decoration: none;
+
+    color: #292929;
+
+    font-size: 13px;
+
+    padding: 27px 0 22px;
+
+    position: relative;
+
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #e98478;
+}
+
+
+/* ITEM ATIVO */
+
+.menu a.ativo {
+    color: #e9786d;
+}
+
+.menu a.ativo::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 11px;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: #e98478;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container {
+    max-width: 1030px;
+
+    margin: 0 auto;
+
+    padding: 20px 25px 45px;
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.titulo {
+    text-align: center;
+
+    margin-top: 0;
+    margin-bottom: 14px;
+}
+
+.titulo h1 {
+    font-size: 21px;
+
+    font-weight: 700;
+
+    color: #292929;
+}
+
+.titulo h1 span {
+    color: #eea096;
+
+    font-size: 26px;
+
+    margin-left: 5px;
+}
+
+.titulo p {
+    font-size: 12px;
+
+    margin-top: 2px;
+
+    color: #333;
+}
+
+
+/* =========================================
+   FILTROS
+========================================= */
+
+.filtros {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 12px 0 18px;
+}
+
+.filtro {
+    border: 1px solid #e8dfd2;
+
+    background: #fffdf9;
+
+    border-radius: 11px;
+
+    padding: 8px 17px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 11px;
+
+    color: #333;
+
+    cursor: pointer;
+
+    transition: all 0.3s;
+}
+
+.filtro:hover {
+    border-color: #ee9a8e;
+
+    transform: translateY(-1px);
+}
+
+.filtro.ativo {
+    background: #fff0ec;
+
+    border-color: #ef9d91;
+
+    color: #e9776b;
+}
+
+
+/* =========================================
+   GRID DOS ANIMAIS
+========================================= */
+
+.animais-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 13px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.animal-card {
+    background: #fffdf9;
+
+    border: 1px solid #eee6da;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow: 0 3px 10px rgba(65, 50, 30, 0.06);
+
+    transition: 0.3s;
+}
+
+.animal-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 8px 50px rgba(65, 50, 30, 0.12);
+}
+
+
+/* =========================================
+   IMAGEM
+========================================= */
+
+.animal-card img {
+    width: 100%;
+
+    height: 342px;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================================
+   INFORMAÇÕES
+========================================= */
+
+.animal-info {
+    text-align: center;
+
+    padding: 9px 10px 11px;
+}
+
+.animal-info h2 {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 1px;
+}
+
+.animal-info p {
+    font-size: 10px;
+
+    color: #444;
+
+    margin-bottom: 9px;
+}
+
+
+/* =========================================
+   BOTÃO ADOTAR
+========================================= */
+
+.btn-adotar {
+    width: 104px;
+
+    border: none;
+
+    background: #ed8479;
+
+    color: white;
+
+    padding: 6px 8px;
+
+    border-radius: 5px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn-adotar:hover {
+    background: #dc7065;
+
+    transform: scale(1.03);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    background: #e9ecdc;
+
+    min-height: 190px;
+
+    display: grid;
+
+    grid-template-columns: 1.2fr 1fr 1.4fr 1.2fr;
+
+    gap: 30px;
+
+    padding: 30px 8%;
+
+    color: #273024;
+}
+
+footer h3 {
+    font-size: 13px;
+
+    margin-bottom: 12px;
+}
+
+footer p {
+    font-size: 10px;
+
+    line-height: 1.8;
+}
+
+footer a {
+    display: block;
+
+    text-decoration: none;
+
+    color: #273024;
+
+    font-size: 10px;
+
+    margin-bottom: 6px;
+
+    transition: 0.3s;
+}
+
+footer a:hover {
+    color: #e5796d;
+}
+
+
+/* =========================================
+   FOOTER LOGO
+========================================= */
+
+.footer-logo {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    font-size: 25px;
+}
+
+.footer-logo strong {
+    font-size: 15px;
+
+    line-height: 17px;
+}
+
+
+/* =========================================
+   BOTÃO DOAR
+========================================= */
+
+.btn-doar {
+    margin-top: 8px;
+
+    background: #ec8176;
+
+    color: white;
+
+    border: none;
+
+    padding: 9px 18px;
+
+    border-radius: 6px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn-doar:hover {
+    background: #d96f64;
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .header {
+        padding: 0 20px;
+    }
+
+    .menu {
+        gap: 15px;
+    }
+
+    .menu a {
+        font-size: 11px;
+    }
+
+    .animais-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    footer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .header {
+        height: auto;
+
+        padding: 15px;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .menu {
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 15px;
+    }
+
+    .menu a {
+        padding: 5px;
+    }
+
+    .menu a.ativo::after {
+        bottom: 0;
+    }
+
+    .container {
+        padding: 25px 15px;
+    }
+
+    .filtros {
+        flex-wrap: wrap;
+    }
+
+    .animais-grid {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+
+        padding: 30px;
+    }
+
+}

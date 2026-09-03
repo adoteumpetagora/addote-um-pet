@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Solicitar Adoção | Adote um Pet</title>
+
+    <link rel="stylesheet" href="solicitar-adocao.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="logo">
+
+            <div class="logo-icon">🐾</div>
+
+            <div class="logo-text">
+                <strong>ADOTE</strong>
+                <span>UM PET</span>
+            </div>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <a href="index.html">Início</a>
+
+            <a href="animais.html">Animais</a>
+
+            <a href="como-adotar.html">Como Adotar</a>
+
+            <a href="solicitar-adotar.html" class="ativo">
+                Solicitar Adoção
+            </a>
+
+            <a href="contato.html">Contato</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- CONTEÚDO -->
+    <main class="container">
+
+        <section class="titulo">
+
+            <h1>
+                Solicitar Adoção
+                <span>♡</span>
+            </h1>
+
+            <p>
+                Preencha o formulário e dê o primeiro passo para encontrar seu novo melhor amigo.
+            </p>
+
+        </section>
+
+
+        <!-- FORMULÁRIO -->
+        <section class="formulario-container">
+
+            <form class="formulario">
+
+                <!-- DADOS PESSOAIS -->
+                <div class="secao">
+
+                    <h2>Seus dados</h2>
+
+                    <div class="linha">
+
+                        <div class="campo">
+
+                            <label for="nome">
+                                Nome completo
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                placeholder="Digite seu nome"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="email">
+                                E-mail
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="seuemail@email.com"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="linha">
+
+                        <div class="campo">
+
+                            <label for="telefone">
+                                Telefone
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="telefone"
+                                name="telefone"
+                                placeholder="(00) 00000-0000"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="endereco">
+                                Cidade
+                            </label>
+
+                            <input
+                                type="text"
+                                id="endereco"
+                                name="endereco"
+                                placeholder="Sua cidade"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DADOS DA ADOÇÃO -->
+                <div class="secao">
+
+                    <h2>Sobre a adoção</h2>
+
+                    <div class="linha">
+
+                        <div class="campo">
+
+                            <label for="animal">
+                                Qual animal deseja adotar?
+                            </label>
+
+                            <select id="animal" name="animal" required>
+
+                                <option value="">
+                                    Selecione um animal
+                                </option>
+
+                                <option value="thor">
+                                    Thor
+                                </option>
+
+                                <option value="luna">
+                                    Luna
+                                </option>
+
+                                <option value="bidu">
+                                    Bidu
+                                </option>
+
+                                <option value="mel">
+                                    Mel
+                                </option>
+
+                                <option value="amora">
+                                    Amora
+                                </option>
+
+                                <option value="mingau">
+                                    Mingau
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="moradia">
+                                Tipo de moradia
+                            </label>
+
+                            <select id="moradia" name="moradia" required>
+
+                                <option value="">
+                                    Selecione
+                                </option>
+
+                                <option value="casa">
+                                    Casa
+                                </option>
+
+                                <option value="apartamento">
+                                    Apartamento
+                                </option>
+
+                                <option value="outro">
+                                    Outro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="experiencia">
+                            Você já teve animais antes?
+                        </label>
+
+                        <select id="experiencia" name="experiencia" required>
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="sim">
+                                Sim
+                            </option>
+
+                            <option value="nao">
+                                Não
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="motivo">
+                            Por que deseja adotar?
+                        </label>
+
+                        <textarea
+                            id="motivo"
+                            name="motivo"
+                            rows="5"
+                            placeholder="Conte um pouco sobre o motivo da sua adoção..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TERMOS -->
+                <div class="termos">
+
+                    <input
+                        type="checkbox"
+                        id="responsabilidade"
+                        required
+                    >
+
+                    <label for="responsabilidade">
+                        Confirmo que estou preparado(a) para assumir
+                        a responsabilidade e os cuidados necessários
+                        com o animal.
+                    </label>
+
+                </div>
+
+
+                <!-- BOTÃO -->
+                <div class="enviar">
+
+                    <button type="submit">
+                        Enviar solicitação
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-col logo-footer">
+
+            <div class="footer-logo">🐾</div>
+
+            <strong>ADOTE UM PET</strong>
+
+            <p>
+                Transformando vidas através da adoção.
+            </p>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h3>Links rápidos</h3>
+
+            <a href="index.html">Início</a>
+
+            <a href="animais.html">Animais</a>
+
+            <a href="como-adotar.html">Como Adotar</a>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h3>Contato</h3>
+
+            <p>📍 Nossa cidade</p>
+
+            <p>📞 (00) 00000-0000</p>
+
+            <p>✉️ contato@adoteumpet.com</p>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h3>Ajude um animal</h3>
+
+            <p>
+                Sua ajuda pode transformar
+                a vida de um animal.
+            </p>
+
+            <button class="btn-doar">
+                Doe agora
+            </button>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

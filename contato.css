@@ -1,0 +1,636 @@
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   GERAL
+===================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #fffaf7;
+    color: #3d3d3d;
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+    width: 100%;
+    min-height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 8%;
+
+    background-color: #ffffff;
+
+    border-bottom: 1px solid #eeeeee;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #f7d8c8;
+
+    border-radius: 50%;
+
+    font-size: 23px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+
+    line-height: 1.1;
+}
+
+.logo-text strong {
+    font-size: 18px;
+    font-weight: 600;
+    color: #6f4e37;
+}
+
+.logo-text span {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #9a8172;
+}
+
+
+/* MENU */
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.menu a {
+    text-decoration: none;
+
+    color: #555555;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #c47d5a;
+}
+
+.menu a.ativo {
+    color: #c47d5a;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+
+    margin: 0 auto;
+
+    padding: 70px 0 90px;
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.titulo {
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+.titulo h1 {
+    font-size: 38px;
+
+    color: #4d3a30;
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+}
+
+.titulo h1 span {
+    color: #d98d6f;
+
+    font-size: 35px;
+
+    margin-left: 5px;
+}
+
+.titulo p {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: #7c706a;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   ÁREA DE CONTATO
+===================================================== */
+
+.contato-area {
+    display: grid;
+
+    grid-template-columns: 1fr 1.1fr;
+
+    gap: 50px;
+
+    align-items: start;
+}
+
+
+/* =====================================================
+   INFORMAÇÕES
+===================================================== */
+
+.informacoes {
+    background-color: #ffffff;
+
+    padding: 40px;
+
+    border-radius: 18px;
+
+    border: 1px solid #f0e5df;
+
+    box-shadow: 0 8px 25px rgba(100, 70, 50, 0.06);
+}
+
+.informacoes h2 {
+    color: #4d3a30;
+
+    font-size: 24px;
+
+    margin-bottom: 15px;
+}
+
+.descricao {
+    color: #7c706a;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+
+/* =====================================================
+   ITENS DE INFORMAÇÃO
+===================================================== */
+
+.info-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    padding: 17px 0;
+
+    border-bottom: 1px solid #f1e9e5;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #f8e3d8;
+
+    border-radius: 12px;
+
+    font-size: 21px;
+}
+
+.info-item h3 {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #59473d;
+
+    margin-bottom: 3px;
+}
+
+.info-item p {
+    font-size: 13px;
+
+    color: #84766e;
+}
+
+
+/* =====================================================
+   FORMULÁRIO
+===================================================== */
+
+.formulario-container {
+    background-color: #ffffff;
+
+    padding: 40px;
+
+    border-radius: 18px;
+
+    border: 1px solid #f0e5df;
+
+    box-shadow: 0 8px 25px rgba(100, 70, 50, 0.06);
+}
+
+.formulario h2 {
+    color: #4d3a30;
+
+    font-size: 24px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   CAMPOS
+===================================================== */
+
+.campo {
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 20px;
+}
+
+.campo label {
+    font-size: 13px;
+
+    font-weight: 500;
+
+    color: #5d4c43;
+
+    margin-bottom: 8px;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid #dfd4ce;
+
+    border-radius: 9px;
+
+    background-color: #fffdfc;
+
+    color: #4b403b;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+    color: #aaa09a;
+}
+
+
+/* FOCO */
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    border-color: #d49376;
+
+    background-color: #ffffff;
+
+    box-shadow: 0 0 0 3px rgba(212, 147, 118, 0.12);
+}
+
+
+/* SELECT */
+
+.campo select {
+    cursor: pointer;
+
+    appearance: auto;
+}
+
+
+/* TEXTAREA */
+
+.campo textarea {
+    resize: vertical;
+
+    min-height: 140px;
+}
+
+
+/* =====================================================
+   BOTÃO
+===================================================== */
+
+.btn-enviar {
+    width: 100%;
+
+    padding: 14px 20px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background-color: #c98262;
+
+    color: #ffffff;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: #b86f50;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 15px rgba(185, 111, 80, 0.2);
+}
+
+.btn-enviar:active {
+    transform: translateY(0);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    background-color: #4d3a30;
+
+    color: #ffffff;
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr;
+
+    gap: 45px;
+
+    padding: 55px 8%;
+}
+
+
+/* COLUNAS */
+
+.footer-col {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+.footer-col h3 {
+    font-size: 15px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+
+    color: #ffffff;
+}
+
+.footer-col p {
+    color: #d8ccc5;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+.footer-col a {
+    color: #d8ccc5;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    transition: 0.3s;
+}
+
+.footer-col a:hover {
+    color: #ffffff;
+}
+
+
+/* LOGO DO FOOTER */
+
+.logo-footer {
+    gap: 7px;
+}
+
+.footer-logo {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #6a5144;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+
+    margin-bottom: 5px;
+}
+
+.logo-footer strong {
+    font-size: 16px;
+
+    font-weight: 600;
+}
+
+
+/* BOTÃO DOAR */
+
+.btn-doar {
+    width: fit-content;
+
+    margin-top: 8px;
+
+    padding: 10px 20px;
+
+    border-radius: 8px;
+
+    background-color: #d18a68;
+
+    color: #ffffff !important;
+
+    font-size: 12px !important;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.btn-doar:hover {
+    background-color: #e09b79;
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .header {
+        padding: 15px 5%;
+    }
+
+    .menu {
+        gap: 15px;
+    }
+
+    .menu a {
+        font-size: 12px;
+    }
+
+    .contato-area {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    footer {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 35px;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .header {
+        flex-direction: column;
+
+        gap: 20px;
+
+        padding: 18px 5%;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px 18px;
+    }
+
+    .container {
+        width: 92%;
+
+        padding: 50px 0 70px;
+    }
+
+    .titulo h1 {
+        font-size: 30px;
+    }
+
+    .titulo p {
+        font-size: 13px;
+    }
+
+    .informacoes,
+    .formulario-container {
+        padding: 25px;
+    }
+
+    .informacoes h2,
+    .formulario h2 {
+        font-size: 21px;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+
+        padding: 45px 8%;
+
+        gap: 35px;
+    }
+}
+

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nossos Animais - Adote um Pet</title>
+
+    <link rel="stylesheet" href="animais.css">
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo">
+            <div class="logo-icon">🐾</div>
+
+            <div class="logo-text">
+                <strong>ADOTE</strong>
+                <strong>UM PET</strong>
+            </div>
+        </div>
+
+        <nav class="menu">
+
+            <a href="index.html">Início</a>
+
+            <a href="animais.html" class="ativo">
+                Animais
+            </a>
+
+            <a href="como-adotar.html">
+                Como Adotar
+            </a>
+
+            <a href="solicitar-adotar.html">
+                Solicitar Adoção
+            </a>
+
+            <a href="contato.html">
+                Contato
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= CONTEÚDO ================= -->
+
+    <main class="container">
+
+        <!-- Título -->
+
+        <section class="titulo">
+
+            <h1>
+                Nossos Animais
+                <span>♡</span>
+            </h1>
+
+            <p>
+                Encontre seu novo melhor amigo!
+            </p>
+
+        </section>
+
+
+        <!-- ================= FILTROS ================= -->
+
+        <div class="filtros">
+
+            <button class="filtro ativo" data-filtro="todos">
+                ❤️ &nbsp; Todos
+            </button>
+
+            <button class="filtro" data-filtro="cachorro">
+                🐶 &nbsp; Cachorros
+            </button>
+
+            <button class="filtro" data-filtro="gato">
+                🐱 &nbsp; Gatos
+            </button>
+
+            <button class="filtro" data-filtro="coelho">
+                🐰 &nbsp; Coelhos
+            </button>
+
+        </div>
+
+
+        <!-- ================= CARDS ================= -->
+
+        <section class="animais-grid">
+
+
+            <!-- THOR -->
+
+            <article class="animal-card" data-tipo="cachorro">
+
+                <img src="imagem/thor.jpg" alt="Thor">
+
+                <div class="animal-info">
+
+                    <h2>Thor</h2>
+
+                    <p>2 anos | Macho</p>
+
+                    <button class="btn-adotar">
+                        Quero Adotar
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- LUNA -->
+
+            <article class="animal-card" data-tipo="gato">
+
+                <img src="imagem/lunna.jpg" alt="Luna">
+
+                <div class="animal-info">
+
+                    <h2>Luna</h2>
+
+                    <p>1 ano | Fêmea</p>
+
+                    <button class="btn-adotar">
+                        Quero Adotar
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- BIDU -->
+
+            <article class="animal-card" data-tipo="cachorro">
+
+                <img src="imagem/bidu.jpg" alt="Bidu">
+
+                <div class="animal-info">
+
+                    <h2>Bidu</h2>
+
+                    <p>3 anos | Macho</p>
+
+                    <button class="btn-adotar">
+                        Quero Adotar
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- MEL -->
+
+            <article class="animal-card" data-tipo="coelho">
+
+                <img src="imagem/mel.jpg" alt="Mel">
+
+                <div class="animal-info">
+
+                    <h2>Mel</h2>
+
+                    <p>1 ano | Fêmea</p>
+
+                    <button class="btn-adotar">
+                        Quero Adotar
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- AMORA -->
+
+            <article class="animal-card" data-tipo="cachorro">
+
+                <img src="imagem/amora.jpg" alt="Amora">
+
+                <div class="animal-info">
+
+                    <h2>Amora</h2>
+
+                    <p>2 anos | Fêmea</p>
+
+                    <button class="btn-adotar">
+                        Quero Adotar
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- MINGAU -->
+
+            <article class="animal-card" data-tipo="gato">
+
+                <img src="imagem/mingau.jpg" alt="Mingau">
+
+                <div class="animal-info">
+
+                    <h2>Mingau</h2>
+
+                    <p>2 anos | Macho</p>
+
+                    <button class="btn-adotar">
+                        Quero Adotar
+                    </button>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            🐾
+            <strong>ADOTE<br>UM PET</strong>
+        </div>
+
+        <div>
+            <h3>Navegação</h3>
+
+            <a href="index.html">Início</a>
+            <a href="animais.html">Animais</a>
+            <a href="como-adotar.html">Como Adotar</a>
+            <a href="solicitar-adocao.html">Solicitar Adoção</a>
+        </div>
+
+        <div>
+            <h3>Contato</h3>
+
+            <p>📞 (62) 99999-9999</p>
+            <p>✉️ contato@adoteumpet.com</p>
+            <p>📍 Goiânia - GO</p>
+        </div>
+
+        <div>
+            <h3>Nos ajude</h3>
+
+            <p>
+                Sua ajuda faz a diferença
+                na vida de muitos pets!
+            </p>
+
+            <button class="btn-doar">
+                Doe agora ♡
+            </button>
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        const filtros = document.querySelectorAll(".filtro");
+        const animais = document.querySelectorAll(".animal-card");
+
+        filtros.forEach(filtro => {
+
+            filtro.addEventListener("click", () => {
+
+                // Remove ativo dos filtros
+                filtros.forEach(item => {
+                    item.classList.remove("ativo");
+                });
+
+                // Adiciona ativo no botão selecionado
+                filtro.classList.add("ativo");
+
+                const categoria = filtro.dataset.filtro;
+
+                animais.forEach(animal => {
+
+                    if (
+                        categoria === "todos" ||
+                        animal.dataset.tipo === categoria
+                    ) {
+
+                        animal.style.display = "block";
+
+                    } else {
+
+                        animal.style.display = "none";
+
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,715 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   GERAL
+===================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #fffaf7;
+    color: #3d3d3d;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+    width: 100%;
+    min-height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 8%;
+
+    background-color: #ffffff;
+
+    border-bottom: 1px solid #eeeeee;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #f7d8c8;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+
+    line-height: 1.1;
+}
+
+.logo-text strong {
+    font-size: 18px;
+
+    font-weight: 600;
+
+    color: #6f4e37;
+}
+
+.logo-text span {
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #9a8172;
+}
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+.menu {
+    display: flex;
+    align-items: center;
+
+    gap: 28px;
+}
+
+.menu a {
+    text-decoration: none;
+
+    color: #555555;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #c47d5a;
+}
+
+
+/* =====================================================
+   ÁREA DE DOAÇÃO
+===================================================== */
+
+.doacao {
+    width: 90%;
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding: 75px 0 90px;
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.titulo {
+    text-align: center;
+
+    max-width: 700px;
+
+    margin: 0 auto 55px;
+}
+
+.coracao {
+    display: block;
+
+    color: #d98d6f;
+
+    font-size: 35px;
+
+    margin-bottom: 5px;
+}
+
+.titulo h1 {
+    color: #4d3a30;
+
+    font-size: 38px;
+
+    font-weight: 600;
+
+    margin-bottom: 15px;
+}
+
+.titulo p {
+    color: #7c706a;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.doacao-area {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 50px;
+
+    align-items: start;
+}
+
+
+/* =====================================================
+   MENSAGEM
+===================================================== */
+
+.mensagem {
+    padding: 40px;
+
+    background-color: #ffffff;
+
+    border-radius: 18px;
+
+    border: 1px solid #f0e5df;
+
+    box-shadow: 0 8px 25px rgba(100, 70, 50, 0.06);
+}
+
+.imagem-pet {
+    width: 85px;
+    height: 85px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #f8e3d8;
+
+    border-radius: 50%;
+
+    font-size: 43px;
+
+    margin-bottom: 25px;
+}
+
+.mensagem h2 {
+    color: #4d3a30;
+
+    font-size: 24px;
+
+    margin-bottom: 15px;
+}
+
+.mensagem > p {
+    color: #7c706a;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    margin-bottom: 15px;
+}
+
+
+/* =====================================================
+   BENEFÍCIOS
+===================================================== */
+
+.beneficios {
+    margin-top: 30px;
+}
+
+.beneficio {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #f1e9e5;
+}
+
+.beneficio:last-child {
+    border-bottom: none;
+}
+
+.beneficio > span {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #fff3ed;
+
+    border-radius: 10px;
+
+    font-size: 20px;
+}
+
+.beneficio strong {
+    display: block;
+
+    color: #59473d;
+
+    font-size: 14px;
+
+    margin-bottom: 3px;
+}
+
+.beneficio p {
+    color: #84766e;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   CARD DE DOAÇÃO
+===================================================== */
+
+.card-doacao {
+    padding: 40px;
+
+    background-color: #ffffff;
+
+    border-radius: 18px;
+
+    border: 1px solid #f0e5df;
+
+    box-shadow: 0 8px 25px rgba(100, 70, 50, 0.06);
+}
+
+.card-doacao h2 {
+    color: #4d3a30;
+
+    font-size: 23px;
+
+    margin-bottom: 5px;
+}
+
+.subtitulo {
+    color: #897970;
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   VALORES
+===================================================== */
+
+.valores {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+.valor {
+    padding: 13px;
+
+    background-color: #fffaf7;
+
+    border: 1px solid #dfd4ce;
+
+    border-radius: 9px;
+
+    color: #684f42;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.valor:hover {
+    border-color: #c98262;
+
+    color: #c98262;
+}
+
+.valor.selecionado {
+    background-color: #c98262;
+
+    border-color: #c98262;
+
+    color: #ffffff;
+}
+
+
+/* =====================================================
+   OUTRO VALOR
+===================================================== */
+
+.card-doacao label {
+    display: block;
+
+    color: #5d4c43;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    margin-bottom: 8px;
+}
+
+.campo-valor {
+    display: flex;
+
+    align-items: center;
+
+    border: 1px solid #dfd4ce;
+
+    border-radius: 9px;
+
+    overflow: hidden;
+
+    margin-bottom: 25px;
+}
+
+.campo-valor span {
+    padding-left: 15px;
+
+    color: #897970;
+
+    font-size: 13px;
+}
+
+.campo-valor input {
+    width: 100%;
+
+    padding: 13px 10px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #4b403b;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   PIX
+===================================================== */
+
+.pix {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px;
+
+    background-color: #f5faf5;
+
+    border: 1px solid #dcebdc;
+
+    border-radius: 12px;
+
+    margin-bottom: 20px;
+}
+
+.pix-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #ffffff;
+
+    border-radius: 10px;
+
+    font-size: 20px;
+}
+
+.pix h3 {
+    color: #4d3a30;
+
+    font-size: 14px;
+
+    margin-bottom: 3px;
+}
+
+.pix p {
+    color: #81766f;
+
+    font-size: 11px;
+}
+
+.pix strong {
+    color: #5b7d5b;
+
+    font-size: 12px;
+
+    word-break: break-all;
+}
+
+
+/* =====================================================
+   BOTÃO DOAR
+===================================================== */
+
+.btn-doar {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background-color: #c98262;
+
+    color: #ffffff;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn-doar:hover {
+    background-color: #b86f50;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 15px rgba(185, 111, 80, 0.2);
+}
+
+
+/* =====================================================
+   SEGURANÇA
+===================================================== */
+
+.seguranca {
+    text-align: center;
+
+    color: #968a83;
+
+    font-size: 10px;
+
+    margin-top: 15px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    background-color: #4d3a30;
+
+    color: #ffffff;
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr;
+
+    gap: 45px;
+
+    padding: 55px 8%;
+}
+
+.footer-col {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+.footer-col h3 {
+    font-size: 15px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+.footer-col p {
+    color: #d8ccc5;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+.footer-col a {
+    color: #d8ccc5;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    transition: 0.3s;
+}
+
+.footer-col a:hover {
+    color: #ffffff;
+}
+
+.footer-logo {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #6a5144;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+
+    margin-bottom: 5px;
+}
+
+.logo-footer strong {
+    font-size: 16px;
+}
+
+.btn-doar-footer {
+    width: fit-content;
+
+    margin-top: 8px;
+
+    padding: 10px 20px;
+
+    border-radius: 8px;
+
+    background-color: #d18a68;
+
+    color: #ffffff !important;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .header {
+        padding: 15px 5%;
+    }
+
+    .menu {
+        gap: 15px;
+    }
+
+    .menu a {
+        font-size: 12px;
+    }
+
+    .doacao-area {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .header {
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px 18px;
+    }
+
+    .doacao {
+        width: 92%;
+
+        padding: 50px 0 70px;
+    }
+
+    .titulo h1 {
+        font-size: 30px;
+    }
+
+    .mensagem,
+    .card-doacao {
+        padding: 25px;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+
+        padding: 45px 8%;
+    }
+}

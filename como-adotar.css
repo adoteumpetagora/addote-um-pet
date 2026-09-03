@@ -1,0 +1,605 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   GERAL
+===================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #faf7f1;
+    color: #292929;
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+    width: 100%;
+    height: 74px;
+
+    background: #fffdf9;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 42px;
+
+    border-bottom: 1px solid #eee7dc;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f8c0b7;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.logo-text strong {
+    font-weight: 600;
+}
+
+.logo-text span {
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.menu a {
+    position: relative;
+
+    text-decoration: none;
+
+    color: #292929;
+
+    font-size: 12px;
+
+    padding: 28px 0 21px;
+
+    transition: color 0.2s ease;
+}
+
+.menu a:hover {
+    color: #e87d72;
+}
+
+.menu a.ativo {
+    color: #e9796e;
+}
+
+.menu a.ativo::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 10px;
+
+    width: 100%;
+    height: 2px;
+
+    background: #e9796e;
+
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding: 30px 20px 50px;
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.titulo {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.titulo h1 {
+    font-size: 24px;
+
+    font-weight: 600;
+}
+
+.titulo h1 span {
+    color: #efa095;
+
+    font-size: 28px;
+
+    margin-left: 4px;
+}
+
+.titulo p {
+    margin-top: 5px;
+
+    font-size: 11px;
+
+    color: #444;
+}
+
+
+/* =====================================================
+   PASSOS
+===================================================== */
+
+.passos {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 16px;
+}
+
+
+/* =====================================================
+   CARD DO PASSO
+===================================================== */
+
+.passo {
+    display: flex;
+
+    gap: 15px;
+
+    background: #fffdf9;
+
+    border: 1px solid #ebe2d6;
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 2px 7px rgba(60, 45, 25, 0.06);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.passo:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 7px 17px rgba(60, 45, 25, 0.10);
+}
+
+
+/* =====================================================
+   NÚMERO
+===================================================== */
+
+.numero {
+    flex-shrink: 0;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f8c0b7;
+
+    color: #70433d;
+
+    border-radius: 50%;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   CONTEÚDO DO PASSO
+===================================================== */
+
+.passo-conteudo {
+    flex: 1;
+}
+
+.passo-conteudo h2 {
+    margin-bottom: 7px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #292929;
+}
+
+.passo-conteudo p {
+    font-size: 10px;
+
+    line-height: 1.7;
+
+    color: #555;
+}
+
+
+/* =====================================================
+   BOTÕES
+===================================================== */
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 29px;
+
+    margin-top: 12px;
+
+    padding: 0 15px;
+
+    border-radius: 5px;
+
+    background: #ed8177;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.btn:hover {
+    background: #dc7066;
+
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   AVISO
+===================================================== */
+
+.aviso {
+    margin-top: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 20px;
+
+    background: #fff0ed;
+
+    border: 1px solid #f1c6bf;
+
+    border-radius: 10px;
+}
+
+.aviso-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f8c0b7;
+
+    color: #b85f55;
+
+    font-size: 20px;
+}
+
+.aviso h2 {
+    margin-bottom: 5px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.aviso p {
+    font-size: 10px;
+
+    line-height: 1.7;
+
+    color: #555;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    width: 100%;
+
+    min-height: 190px;
+
+    background: #e9ecdc;
+
+    display: grid;
+
+    grid-template-columns:
+        1.3fr
+        1fr
+        1.4fr
+        1.2fr;
+
+    gap: 30px;
+
+    padding: 30px 8%;
+
+    color: #273024;
+}
+
+
+/* =====================================================
+   FOOTER COLUNAS
+===================================================== */
+
+.footer-col {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.footer-col h3 {
+    margin-bottom: 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.footer-col p {
+    margin-bottom: 3px;
+
+    font-size: 10px;
+
+    line-height: 1.8;
+}
+
+.footer-col a {
+    margin-bottom: 6px;
+
+    text-decoration: none;
+
+    color: #273024;
+
+    font-size: 10px;
+}
+
+.footer-col a:hover {
+    color: #e5796d;
+}
+
+
+/* =====================================================
+   LOGO FOOTER
+===================================================== */
+
+.logo-footer {
+    display: grid;
+
+    grid-template-columns: auto auto;
+
+    align-content: start;
+
+    justify-content: start;
+
+    column-gap: 8px;
+}
+
+.footer-logo {
+    grid-row: span 2;
+
+    font-size: 28px;
+}
+
+.logo-footer strong {
+    font-size: 14px;
+
+    line-height: 16px;
+}
+
+.logo-footer p {
+    grid-column: 1 / 3;
+
+    margin-top: 12px;
+}
+
+
+/* =====================================================
+   BOTÃO DOAR
+===================================================== */
+
+.btn-doar {
+    width: 100px;
+    height: 32px;
+
+    margin-top: 8px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #ed8177;
+
+    color: white;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+.btn-doar:hover {
+    background: #d97066;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .header {
+        padding: 0 25px;
+    }
+
+    .menu {
+        gap: 18px;
+    }
+
+    .menu a {
+        font-size: 10px;
+    }
+
+    .passos {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .header {
+        height: auto;
+
+        padding: 15px 20px;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .menu {
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+    }
+
+    .menu a {
+        padding: 4px;
+    }
+
+    .menu a.ativo::after {
+        bottom: 0;
+    }
+
+    .container {
+        padding: 25px 15px 40px;
+    }
+
+    .titulo h1 {
+        font-size: 20px;
+    }
+
+    .passos {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .passo {
+        padding: 17px;
+    }
+
+    .aviso {
+        align-items: flex-start;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+
+        padding: 30px;
+    }
+}
