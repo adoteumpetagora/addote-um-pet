@@ -1,6 +1,13 @@
-/* ================================
+/* =========================================================
+   ADOTE UM PET
+   PAINEL ADMINISTRATIVO
+   IDENTIDADE VISUAL DO SITE
+========================================================= */
+
+
+/* =========================================================
    RESET
-================================ */
+========================================================= */
 
 * {
     margin: 0;
@@ -15,37 +22,72 @@ html {
 body {
     font-family: "Poppins", sans-serif;
     background: #faf7f1;
-    color: #292929;
+    color: #292b27;
     min-height: 100vh;
 }
 
 
-/* ================================
+/* =========================================================
+   CORES PRINCIPAIS
+========================================================= */
+
+:root {
+    --verde: #718866;
+    --verde-escuro: #566c4d;
+    --verde-claro: #dfe8d6;
+    --verde-muito-claro: #f1f5ec;
+
+    --rosa: #ef8d82;
+    --rosa-escuro: #df776d;
+    --rosa-claro: #f9d9d3;
+    --rosa-muito-claro: #fff0ed;
+
+    --creme: #fffaf3;
+    --bege: #f5eee3;
+    --bege-escuro: #e8dfd2;
+
+    --branco: #ffffff;
+
+    --texto: #292b27;
+    --texto-secundario: #666861;
+
+    --borda: #ebe4d9;
+
+    --sombra: 0 8px 25px rgba(74, 82, 63, 0.08);
+}
+
+
+/* =========================================================
    HEADER
-================================ */
+========================================================= */
 
 .header {
     width: 100%;
-    height: 74px;
+    min-height: 74px;
 
-    background: #fffdf9;
+    background: rgba(255, 250, 243, 0.98);
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 42px;
+    padding: 12px 42px;
 
-    border-bottom: 1px solid #eee7dc;
+    border-bottom: 1px solid var(--borda);
+
+    position: relative;
+    z-index: 10;
 }
 
 
-/* LOGO */
+/* =========================================================
+   LOGO
+========================================================= */
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 11px;
 }
 
 .logo-icon {
@@ -56,11 +98,15 @@ body {
     align-items: center;
     justify-content: center;
 
-    background: #f8c0b7;
+    background: var(--rosa-claro);
 
     border-radius: 50%;
 
+    color: var(--rosa);
+
     font-size: 22px;
+
+    flex-shrink: 0;
 }
 
 .logo-text {
@@ -69,18 +115,23 @@ body {
 
     font-size: 14px;
     line-height: 16px;
+
+    color: var(--texto);
 }
 
 .logo-text strong {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .logo-text span {
     font-size: 11px;
+    font-weight: 500;
 }
 
 
-/* ADMINISTRADOR */
+/* =========================================================
+   ADMINISTRADOR
+========================================================= */
 
 .admin-info {
     display: flex;
@@ -88,7 +139,7 @@ body {
     gap: 10px;
 
     font-size: 11px;
-    color: #444;
+    color: var(--texto-secundario);
 }
 
 .admin-icon {
@@ -99,101 +150,121 @@ body {
     align-items: center;
     justify-content: center;
 
-    background: #f8e2dc;
+    background: var(--rosa-muito-claro);
 
     border-radius: 50%;
+
+    color: var(--rosa);
 
     font-size: 18px;
 }
 
 
-/* ================================
-   CONTAINER
-================================ */
+/* =========================================================
+   CONTAINER PRINCIPAL
+========================================================= */
 
 .container {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1180px;
 
     margin: 0 auto;
 
-    padding: 35px 20px 55px;
+    padding: 40px 25px 60px;
 }
 
 
-/* ================================
+/* =========================================================
    TÍTULO
-================================ */
+========================================================= */
 
 .titulo {
     text-align: center;
-    margin-bottom: 30px;
+
+    margin-bottom: 32px;
 }
 
 .titulo h1 {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 27px;
+
+    font-weight: 700;
+
+    color: var(--texto);
 }
 
 .titulo h1 span {
-    color: #efa095;
-    font-size: 28px;
+    color: var(--rosa);
+
+    font-size: 29px;
+
     margin-left: 4px;
 }
 
 .titulo p {
-    margin-top: 5px;
+    margin-top: 7px;
 
-    font-size: 11px;
+    font-size: 12px;
 
-    color: #555;
+    color: var(--texto-secundario);
 }
 
 
-/* ================================
+/* =========================================================
    CARDS DE RESUMO
-================================ */
+========================================================= */
 
 .resumo {
     display: grid;
 
     grid-template-columns: repeat(4, 1fr);
 
-    gap: 15px;
+    gap: 18px;
 
     margin-bottom: 25px;
 }
 
 .resumo-card {
-    background: #fffdf9;
+    background: var(--branco);
 
-    border: 1px solid #ebe2d6;
+    border: 1px solid var(--borda);
 
-    border-radius: 10px;
+    border-radius: 16px;
 
-    padding: 18px;
+    padding: 20px;
 
     display: flex;
     align-items: center;
 
     gap: 14px;
 
-    box-shadow: 0 2px 7px rgba(60, 45, 25, .05);
+    box-shadow: var(--sombra);
+
+    transition: 0.25s ease;
+}
+
+.resumo-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 12px 28px rgba(74, 82, 63, 0.11);
 }
 
 .resumo-icon {
-    width: 45px;
-    height: 45px;
+    width: 48px;
+    height: 48px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: #fff0ed;
+    background: var(--rosa-muito-claro);
 
-    border-radius: 9px;
+    border-radius: 12px;
+
+    color: var(--rosa);
 
     font-size: 21px;
+
+    flex-shrink: 0;
 }
 
 .resumo-card div:last-child {
@@ -202,243 +273,326 @@ body {
 }
 
 .resumo-card span {
-    font-size: 9px;
-    color: #666;
+    font-size: 10px;
+
+    color: var(--texto-secundario);
 }
 
 .resumo-card strong {
     margin-top: 3px;
 
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 21px;
+
+    font-weight: 700;
+
+    color: var(--texto);
 }
 
 
-/* ================================
+/* =========================================================
    PAINEL
-================================ */
+========================================================= */
 
 .painel {
-    background: #fffdf9;
+    background: var(--branco);
 
-    border: 1px solid #ebe2d6;
+    border: 1px solid var(--borda);
 
-    border-radius: 10px;
+    border-radius: 18px;
 
-    padding: 22px;
+    padding: 25px;
 
     margin-bottom: 22px;
 
-    box-shadow: 0 2px 7px rgba(60, 45, 25, .05);
+    box-shadow: var(--sombra);
 }
 
 
-/* CABEÇALHO DO PAINEL */
+/* =========================================================
+   CABEÇALHO DO PAINEL
+========================================================= */
 
 .painel-header {
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+
+    gap: 15px;
 }
 
 .painel-header h2 {
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 17px;
+
+    font-weight: 700;
+
+    color: var(--texto);
 }
 
 .painel-header p {
-    margin-top: 3px;
+    margin-top: 4px;
 
-    font-size: 9px;
+    font-size: 10px;
 
-    color: #666;
+    color: var(--texto-secundario);
 }
 
 
-/* ================================
-   BOTÕES
-================================ */
+/* =========================================================
+   BOTÃO ADICIONAR
+========================================================= */
 
 .btn-adicionar {
-    height: 34px;
+    min-height: 38px;
 
-    padding: 0 16px;
+    padding: 0 18px;
 
     border: none;
-    border-radius: 6px;
 
-    background: #ed8177;
+    border-radius: 9px;
 
-    color: white;
+    background: var(--verde);
+
+    color: var(--branco);
 
     font-family: "Poppins", sans-serif;
 
     font-size: 10px;
 
+    font-weight: 600;
+
     cursor: pointer;
 
-    transition: .2s;
+    transition: 0.25s ease;
 }
 
 .btn-adicionar:hover {
-    background: #d97066;
+    background: var(--verde-escuro);
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 12px rgba(113, 136, 102, 0.2);
+}
+
+
+/* =========================================================
+   BOTÃO VER TODAS
+========================================================= */
+
+.btn-ver-todas {
+    min-height: 35px;
+
+    padding: 0 16px;
+
+    background: var(--rosa-muito-claro);
+
+    border: 1px solid var(--rosa-claro);
+
+    border-radius: 9px;
+
+    color: var(--rosa-escuro);
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.btn-ver-todas:hover {
+    background: var(--rosa-claro);
 
     transform: translateY(-1px);
 }
 
-.btn-ver-todas {
-    height: 32px;
 
-    padding: 0 15px;
-
-    background: #fff0ed;
-
-    border: 1px solid #edb1a8;
-
-    border-radius: 6px;
-
-    color: #e8756a;
-
-    font-family: "Poppins", sans-serif;
-
-    font-size: 10px;
-
-    cursor: pointer;
-}
-
-
-/* ================================
+/* =========================================================
    TABELA
-================================ */
+========================================================= */
 
 .tabela-container {
     width: 100%;
 
     overflow-x: auto;
+
+    border-radius: 12px;
 }
 
 table {
     width: 100%;
 
-    border-collapse: collapse;
+    border-collapse: separate;
+
+    border-spacing: 0;
 
     min-width: 650px;
 }
 
 thead {
-    background: #faf7f1;
+    background: var(--verde-muito-claro);
+}
+
+thead tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+thead tr:first-child th:last-child {
+    border-top-right-radius: 10px;
 }
 
 th {
-    padding: 11px;
+    padding: 13px 12px;
 
     text-align: left;
 
     font-size: 9px;
 
-    font-weight: 600;
+    font-weight: 700;
 
-    color: #555;
+    color: var(--verde-escuro);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.3px;
 }
 
 td {
-    padding: 11px;
+    padding: 13px 12px;
 
-    border-top: 1px solid #eee7dc;
+    border-top: 1px solid #f0ebe3;
 
     font-size: 10px;
+
+    color: var(--texto);
+
+    background: var(--branco);
+}
+
+tbody tr {
+    transition: 0.2s ease;
+}
+
+tbody tr:hover td {
+    background: #fffcf8;
 }
 
 
-/* ================================
-   ANIMAL
-================================ */
+/* =========================================================
+   IMAGEM DO ANIMAL
+========================================================= */
 
 .animal-img {
-    width: 38px;
-    height: 38px;
+    width: 45px;
+    height: 45px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: #f5f1e9;
+    background: var(--bege);
 
-    border-radius: 7px;
+    border-radius: 10px;
 
-    font-size: 20px;
+    font-size: 21px;
+
+    overflow: hidden;
+}
+
+.animal-img img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
 }
 
 
-/* ================================
-   STATUS
-================================ */
+/* =========================================================
+   STATUS DOS ANIMAIS
+========================================================= */
 
 .status {
     display: inline-flex;
 
-    padding: 5px 9px;
+    align-items: center;
+
+    padding: 6px 11px;
 
     border-radius: 20px;
 
     font-size: 8px;
+
+    font-weight: 600;
 }
 
 .disponivel {
-    background: #e8f2e2;
+    background: var(--verde-claro);
 
-    color: #55704c;
+    color: var(--verde-escuro);
 }
 
 .adotado {
-    background: #eee8df;
+    background: var(--bege);
 
     color: #756b60;
 }
 
 
-/* ================================
+/* =========================================================
    AÇÕES
-================================ */
+========================================================= */
 
 .acoes {
     display: flex;
 
-    gap: 6px;
+    align-items: center;
+
+    gap: 7px;
 }
 
 .acoes button {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
 
     border: none;
 
-    border-radius: 5px;
+    border-radius: 8px;
 
     cursor: pointer;
 
-    transition: .2s;
+    transition: 0.2s ease;
+
+    font-size: 13px;
 }
 
 .editar {
-    background: #fff0ed;
+    background: var(--verde-muito-claro);
+
+    color: var(--verde);
 }
 
 .excluir {
-    background: #f8e5e2;
+    background: var(--rosa-muito-claro);
+
+    color: var(--rosa);
 }
 
 .acoes button:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px);
+
+    box-shadow: 0 4px 10px rgba(74, 82, 63, 0.10);
 }
 
 
-/* ================================
+/* =========================================================
    SOLICITAÇÕES
-================================ */
+========================================================= */
 
 .solicitacao {
     display: flex;
@@ -449,9 +603,13 @@ td {
 
     gap: 15px;
 
-    padding: 13px 0;
+    padding: 15px 0;
 
-    border-top: 1px solid #eee7dc;
+    border-top: 1px solid #eee9e1;
+}
+
+.solicitacao:first-child {
+    border-top: none;
 }
 
 .solicitacao-info {
@@ -459,24 +617,28 @@ td {
 
     align-items: center;
 
-    gap: 10px;
+    gap: 11px;
 
     flex: 1;
 }
 
 .usuario-icon {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: #f8e2dc;
+    background: var(--rosa-muito-claro);
 
     border-radius: 50%;
 
+    color: var(--rosa);
+
     font-size: 17px;
+
+    flex-shrink: 0;
 }
 
 .solicitacao-info div:last-child {
@@ -488,26 +650,32 @@ td {
 .solicitacao-info strong {
     font-size: 10px;
 
-    font-weight: 600;
+    font-weight: 700;
+
+    color: var(--texto);
 }
 
 .solicitacao-info span {
-    margin-top: 2px;
+    margin-top: 3px;
 
     font-size: 8px;
 
-    color: #666;
+    color: var(--texto-secundario);
 }
 
 
-/* STATUS SOLICITAÇÃO */
+/* =========================================================
+   STATUS DA SOLICITAÇÃO
+========================================================= */
 
 .solicitacao-status {
-    padding: 5px 10px;
+    padding: 6px 11px;
 
     border-radius: 20px;
 
     font-size: 8px;
+
+    font-weight: 600;
 }
 
 .pendente {
@@ -517,51 +685,130 @@ td {
 }
 
 .aprovada {
-    background: #e7f2e3;
+    background: var(--verde-claro);
 
-    color: #55704c;
+    color: var(--verde-escuro);
 }
 
 
-/* DETALHES */
+/* =========================================================
+   BOTÃO DETALHES
+========================================================= */
 
 .btn-detalhes {
-    height: 30px;
+    min-height: 31px;
 
-    padding: 0 12px;
+    padding: 0 13px;
 
     background: transparent;
 
-    border: 1px solid #e5dccf;
+    border: 1px solid var(--borda);
 
-    border-radius: 5px;
+    border-radius: 8px;
 
-    color: #555;
+    color: var(--texto-secundario);
 
     font-family: "Poppins", sans-serif;
 
     font-size: 8px;
 
+    font-weight: 500;
+
     cursor: pointer;
+
+    transition: 0.2s ease;
 }
 
 .btn-detalhes:hover {
-    border-color: #ed9186;
+    border-color: var(--rosa);
 
-    color: #e8756a;
+    color: var(--rosa-escuro);
+
+    background: var(--rosa-muito-claro);
 }
 
 
-/* ================================
+/* =========================================================
+   FORMULÁRIOS DO ADMIN
+========================================================= */
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 9px;
+
+    background: var(--creme);
+
+    color: var(--texto);
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--verde);
+
+    background: var(--branco);
+
+    box-shadow: 0 0 0 3px rgba(113, 136, 102, 0.08);
+}
+
+textarea {
+    resize: vertical;
+
+    min-height: 90px;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    color: var(--texto);
+}
+
+
+/* =========================================================
+   BOTÕES GERAIS
+========================================================= */
+
+button {
+    font-family: "Poppins", sans-serif;
+}
+
+
+/* =========================================================
    FOOTER
-================================ */
+========================================================= */
 
 footer {
     width: 100%;
 
-    min-height: 120px;
+    min-height: 145px;
 
-    background: #e9ecdc;
+    background: var(--verde-claro);
 
     display: flex;
 
@@ -572,6 +819,8 @@ footer {
     padding: 30px 8%;
 
     color: #273024;
+
+    border-top: 1px solid #d5dfcb;
 }
 
 .footer-logo {
@@ -579,11 +828,13 @@ footer {
 
     align-items: center;
 
-    gap: 8px;
+    gap: 9px;
 }
 
 .footer-logo-icon {
     font-size: 28px;
+
+    color: var(--verde);
 }
 
 .footer-logo strong,
@@ -593,22 +844,111 @@ footer {
 
 .footer-logo strong {
     font-size: 13px;
+
+    font-weight: 700;
 }
 
 .footer-logo span {
     font-size: 10px;
+
+    color: var(--verde-escuro);
 }
 
 footer p {
     font-size: 9px;
+
+    color: #566052;
 }
 
 
-/* ================================
-   RESPONSIVO
-================================ */
+/* =========================================================
+   MENSAGENS / ALERTAS
+========================================================= */
 
-@media (max-width: 900px) {
+.alerta {
+    padding: 13px 16px;
+
+    border-radius: 10px;
+
+    font-size: 10px;
+
+    margin-bottom: 15px;
+}
+
+.alerta-sucesso {
+    background: var(--verde-muito-claro);
+
+    border: 1px solid var(--verde-claro);
+
+    color: var(--verde-escuro);
+}
+
+.alerta-erro {
+    background: var(--rosa-muito-claro);
+
+    border: 1px solid var(--rosa-claro);
+
+    color: var(--rosa-escuro);
+}
+
+
+/* =========================================================
+   PAGINAÇÃO
+========================================================= */
+
+.paginacao {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 20px;
+}
+
+.paginacao button {
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 8px;
+
+    background: var(--branco);
+
+    color: var(--texto-secundario);
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.paginacao button:hover,
+.paginacao .ativo {
+    background: var(--verde);
+
+    color: var(--branco);
+
+    border-color: var(--verde);
+}
+
+
+/* =========================================================
+   RESPONSIVO — TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .header {
+        padding: 12px 25px;
+    }
+
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 
     .resumo {
         grid-template-columns: repeat(2, 1fr);
@@ -617,62 +957,170 @@ footer p {
 }
 
 
+/* =========================================================
+   RESPONSIVO — CELULAR
+========================================================= */
+
 @media (max-width: 650px) {
 
     .header {
-        height: auto;
+        min-height: auto;
 
         padding: 15px 20px;
 
         gap: 12px;
     }
 
-    .container {
-        padding: 25px 15px 40px;
+    .logo-icon {
+        width: 38px;
+        height: 38px;
+
+        font-size: 19px;
     }
+
+    .logo-text {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .logo-text span {
+        font-size: 9px;
+    }
+
+    .admin-info {
+        font-size: 9px;
+    }
+
+    .admin-icon {
+        width: 34px;
+        height: 34px;
+
+        font-size: 15px;
+    }
+
+
+    /* CONTAINER */
+
+    .container {
+        padding: 28px 15px 45px;
+    }
+
+
+    /* TÍTULO */
+
+    .titulo {
+        margin-bottom: 25px;
+    }
+
+    .titulo h1 {
+        font-size: 22px;
+    }
+
+    .titulo h1 span {
+        font-size: 24px;
+    }
+
+    .titulo p {
+        font-size: 10px;
+    }
+
+
+    /* RESUMO */
 
     .resumo {
         grid-template-columns: 1fr;
+
+        gap: 12px;
     }
 
-    .painel {
+    .resumo-card {
         padding: 16px;
+    }
+
+
+    /* PAINEL */
+
+    .painel {
+        padding: 17px;
+
+        border-radius: 15px;
     }
 
     .painel-header {
         align-items: flex-start;
 
-        gap: 12px;
-
         flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .painel-header h2 {
+        font-size: 15px;
     }
 
     .btn-adicionar {
         width: 100%;
     }
 
+
+    /* SOLICITAÇÕES */
+
     .solicitacao {
         align-items: flex-start;
 
         flex-direction: column;
+
+        padding: 15px 0;
     }
 
     .solicitacao-status {
-        margin-left: 48px;
+        margin-left: 51px;
     }
 
     .btn-detalhes {
-        margin-left: 48px;
+        margin-left: 51px;
     }
+
+
+    /* FOOTER */
 
     footer {
         flex-direction: column;
 
         align-items: flex-start;
 
-        gap: 15px;
+        gap: 18px;
 
-        padding: 25px;
+        padding: 28px 25px;
+    }
+
+}
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .header {
+        padding: 13px 15px;
+    }
+
+    .admin-info {
+        display: none;
+    }
+
+    .titulo h1 {
+        font-size: 20px;
+    }
+
+    .painel {
+        padding: 14px;
+    }
+
+    .resumo-card {
+        padding: 14px;
     }
 
 }
