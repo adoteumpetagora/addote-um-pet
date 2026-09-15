@@ -1,0 +1,678 @@
+/* ================================
+   RESET
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #faf7f1;
+    color: #292929;
+    min-height: 100vh;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.header {
+    width: 100%;
+    height: 74px;
+
+    background: #fffdf9;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 42px;
+
+    border-bottom: 1px solid #eee7dc;
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f8c0b7;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.logo-text strong {
+    font-weight: 600;
+}
+
+.logo-text span {
+    font-size: 11px;
+}
+
+
+/* ADMINISTRADOR */
+
+.admin-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 11px;
+    color: #444;
+}
+
+.admin-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f8e2dc;
+
+    border-radius: 50%;
+
+    font-size: 18px;
+}
+
+
+/* ================================
+   CONTAINER
+================================ */
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 35px 20px 55px;
+}
+
+
+/* ================================
+   TÍTULO
+================================ */
+
+.titulo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.titulo h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.titulo h1 span {
+    color: #efa095;
+    font-size: 28px;
+    margin-left: 4px;
+}
+
+.titulo p {
+    margin-top: 5px;
+
+    font-size: 11px;
+
+    color: #555;
+}
+
+
+/* ================================
+   CARDS DE RESUMO
+================================ */
+
+.resumo {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.resumo-card {
+    background: #fffdf9;
+
+    border: 1px solid #ebe2d6;
+
+    border-radius: 10px;
+
+    padding: 18px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    box-shadow: 0 2px 7px rgba(60, 45, 25, .05);
+}
+
+.resumo-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff0ed;
+
+    border-radius: 9px;
+
+    font-size: 21px;
+}
+
+.resumo-card div:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.resumo-card span {
+    font-size: 9px;
+    color: #666;
+}
+
+.resumo-card strong {
+    margin-top: 3px;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+/* ================================
+   PAINEL
+================================ */
+
+.painel {
+    background: #fffdf9;
+
+    border: 1px solid #ebe2d6;
+
+    border-radius: 10px;
+
+    padding: 22px;
+
+    margin-bottom: 22px;
+
+    box-shadow: 0 2px 7px rgba(60, 45, 25, .05);
+}
+
+
+/* CABEÇALHO DO PAINEL */
+
+.painel-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.painel-header h2 {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.painel-header p {
+    margin-top: 3px;
+
+    font-size: 9px;
+
+    color: #666;
+}
+
+
+/* ================================
+   BOTÕES
+================================ */
+
+.btn-adicionar {
+    height: 34px;
+
+    padding: 0 16px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #ed8177;
+
+    color: white;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.btn-adicionar:hover {
+    background: #d97066;
+
+    transform: translateY(-1px);
+}
+
+.btn-ver-todas {
+    height: 32px;
+
+    padding: 0 15px;
+
+    background: #fff0ed;
+
+    border: 1px solid #edb1a8;
+
+    border-radius: 6px;
+
+    color: #e8756a;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+
+/* ================================
+   TABELA
+================================ */
+
+.tabela-container {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 650px;
+}
+
+thead {
+    background: #faf7f1;
+}
+
+th {
+    padding: 11px;
+
+    text-align: left;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    color: #555;
+}
+
+td {
+    padding: 11px;
+
+    border-top: 1px solid #eee7dc;
+
+    font-size: 10px;
+}
+
+
+/* ================================
+   ANIMAL
+================================ */
+
+.animal-img {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f5f1e9;
+
+    border-radius: 7px;
+
+    font-size: 20px;
+}
+
+
+/* ================================
+   STATUS
+================================ */
+
+.status {
+    display: inline-flex;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 8px;
+}
+
+.disponivel {
+    background: #e8f2e2;
+
+    color: #55704c;
+}
+
+.adotado {
+    background: #eee8df;
+
+    color: #756b60;
+}
+
+
+/* ================================
+   AÇÕES
+================================ */
+
+.acoes {
+    display: flex;
+
+    gap: 6px;
+}
+
+.acoes button {
+    width: 30px;
+    height: 30px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.editar {
+    background: #fff0ed;
+}
+
+.excluir {
+    background: #f8e5e2;
+}
+
+.acoes button:hover {
+    transform: scale(1.05);
+}
+
+
+/* ================================
+   SOLICITAÇÕES
+================================ */
+
+.solicitacao {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 13px 0;
+
+    border-top: 1px solid #eee7dc;
+}
+
+.solicitacao-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex: 1;
+}
+
+.usuario-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f8e2dc;
+
+    border-radius: 50%;
+
+    font-size: 17px;
+}
+
+.solicitacao-info div:last-child {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.solicitacao-info strong {
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+.solicitacao-info span {
+    margin-top: 2px;
+
+    font-size: 8px;
+
+    color: #666;
+}
+
+
+/* STATUS SOLICITAÇÃO */
+
+.solicitacao-status {
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 8px;
+}
+
+.pendente {
+    background: #fff2d9;
+
+    color: #98743b;
+}
+
+.aprovada {
+    background: #e7f2e3;
+
+    color: #55704c;
+}
+
+
+/* DETALHES */
+
+.btn-detalhes {
+    height: 30px;
+
+    padding: 0 12px;
+
+    background: transparent;
+
+    border: 1px solid #e5dccf;
+
+    border-radius: 5px;
+
+    color: #555;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 8px;
+
+    cursor: pointer;
+}
+
+.btn-detalhes:hover {
+    border-color: #ed9186;
+
+    color: #e8756a;
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+    width: 100%;
+
+    min-height: 120px;
+
+    background: #e9ecdc;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 30px 8%;
+
+    color: #273024;
+}
+
+.footer-logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.footer-logo-icon {
+    font-size: 28px;
+}
+
+.footer-logo strong,
+.footer-logo span {
+    display: block;
+}
+
+.footer-logo strong {
+    font-size: 13px;
+}
+
+.footer-logo span {
+    font-size: 10px;
+}
+
+footer p {
+    font-size: 9px;
+}
+
+
+/* ================================
+   RESPONSIVO
+================================ */
+
+@media (max-width: 900px) {
+
+    .resumo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .header {
+        height: auto;
+
+        padding: 15px 20px;
+
+        gap: 12px;
+    }
+
+    .container {
+        padding: 25px 15px 40px;
+    }
+
+    .resumo {
+        grid-template-columns: 1fr;
+    }
+
+    .painel {
+        padding: 16px;
+    }
+
+    .painel-header {
+        align-items: flex-start;
+
+        gap: 12px;
+
+        flex-direction: column;
+    }
+
+    .btn-adicionar {
+        width: 100%;
+    }
+
+    .solicitacao {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .solicitacao-status {
+        margin-left: 48px;
+    }
+
+    .btn-detalhes {
+        margin-left: 48px;
+    }
+
+    footer {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+        padding: 25px;
+    }
+
+}

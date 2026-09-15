@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Painel Administrativo | Adote um Pet</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+
+        <div class="logo">
+            <div class="logo-icon">🐾</div>
+
+            <div class="logo-text">
+                <strong>ADOTE</strong>
+                <span>UM PET</span>
+            </div>
+        </div>
+
+        <div class="admin-info">
+            <span>Administrador</span>
+            <button id="btnSair" type="button">Sair</button>
+        </div>
+
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container">
+
+        <section class="titulo">
+            <h1>Painel Administrativo</h1>
+            <p>Gerencie os animais e as solicitações de adoção.</p>
+        </section>
+
+
+        <!-- CARDS DE RESUMO -->
+        <section class="resumo">
+
+            <div class="resumo-card">
+                <div class="resumo-icone">🐶</div>
+
+                <div>
+                    <span>Animais</span>
+                    <strong id="totalAnimais">0</strong>
+                </div>
+            </div>
+
+
+            <div class="resumo-card">
+                <div class="resumo-icone">📋</div>
+
+                <div>
+                    <span>Solicitações</span>
+                    <strong id="totalSolicitacoes">0</strong>
+                </div>
+            </div>
+
+
+            <div class="resumo-card">
+                <div class="resumo-icone">❤️</div>
+
+                <div>
+                    <span>Adoções</span>
+                    <strong id="totalAdocoes">0</strong>
+                </div>
+            </div>
+
+
+            <div class="resumo-card">
+                <div class="resumo-icone">💰</div>
+
+                <div>
+                    <span>Doações</span>
+                    <strong id="totalDoacoes">R$ 0,00</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- GERENCIAMENTO DE ANIMAIS -->
+        <section class="admin-section">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Gerenciar Animais</h2>
+                    <p>Adicione, edite ou remova animais disponíveis.</p>
+                </div>
+
+                <button id="btnAdicionarAnimal" class="btn-principal" type="button">
+                    + Adicionar animal
+                </button>
+
+            </div>
+
+
+            <div class="tabela-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Animal</th>
+                            <th>Tipo</th>
+                            <th>Idade</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <!-- O JS vai preencher esta parte -->
+                    <tbody id="tabelaAnimais"></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- SOLICITAÇÕES -->
+        <section class="admin-section">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Solicitações de Adoção</h2>
+                    <p>Gerencie os pedidos recebidos.</p>
+                </div>
+
+            </div>
+
+
+            <div class="tabela-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Adotante</th>
+                            <th>Animal</th>
+                            <th>Data</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <!-- O JS vai preencher esta parte -->
+                    <tbody id="tabelaSolicitacoes"></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MODAL PARA ADICIONAR / EDITAR ANIMAL -->
+    <div id="modalAnimal" class="modal">
+
+        <div class="modal-conteudo">
+
+            <div class="modal-header">
+
+                <h2 id="tituloModalAnimal">Adicionar animal</h2>
+
+                <button id="btnFecharModal" type="button">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <form id="formAnimal">
+
+                <input type="hidden" id="animalId">
+
+
+                <div class="campo">
+                    <label for="nomeAnimal">Nome</label>
+
+                    <input
+                        type="text"
+                        id="nomeAnimal"
+                        placeholder="Ex.: Thor"
+                        required
+                    >
+                </div>
+
+
+                <div class="linha">
+
+                    <div class="campo">
+
+                        <label for="tipoAnimal">Tipo</label>
+
+                        <select id="tipoAnimal" required>
+                            <option value="">Selecione</option>
+                            <option value="Cachorro">Cachorro</option>
+                            <option value="Gato">Gato</option>
+                            <option value="Coelho">Coelho</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="idadeAnimal">Idade</label>
+
+                        <input
+                            type="text"
+                            id="idadeAnimal"
+                            placeholder="Ex.: 2 anos"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="imagemAnimal">Imagem</label>
+
+                    <input
+                        type="text"
+                        id="imagemAnimal"
+                        placeholder="Ex.: imagens/thor.jpg"
+                    >
+
+                    <small>
+                        Informe o caminho da imagem.
+                    </small>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="statusAnimal">Status</label>
+
+                    <select id="statusAnimal" required>
+                        <option value="Disponível">Disponível</option>
+                        <option value="Adotado">Adotado</option>
+                    </select>
+
+                </div>
+
+
+                <div class="modal-botoes">
+
+                    <button
+                        type="button"
+                        id="btnCancelarAnimal"
+                        class="btn-cancelar"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-principal"
+                    >
+                        Salvar animal
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <div class="footer-col">
+
+            <div class="logo-footer">
+
+                <span class="footer-logo">🐾</span>
+
+                <strong>ADOTE<br>UM PET</strong>
+
+                <p>
+                    Conectando animais que precisam de um lar
+                    com pessoas que querem amar.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h3>Links</h3>
+
+            <a href="index.html">Início</a>
+            <a href="animais.html">Animais</a>
+            <a href="como-adotar.html">Como adotar</a>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h3>Atendimento</h3>
+
+            <p>Segunda a sexta</p>
+            <p>08:00 às 18:00</p>
+            <p>(00) 00000-0000</p>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h3>Ajude</h3>
+
+            <a href="doacao.html">Faça uma doação</a>
+            <a href="contato.html">Entre em contato</a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT DO ADMIN -->
+    <script src="admin.js"></script>
+
+</body>
+
+</html>
