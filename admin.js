@@ -1,988 +1,1100 @@
-// ======================================================
-// ADOTE UM PET - PAINEL ADMINISTRATIVO
-// ======================================================
+/* ========================================
+   PROTEÇÃO DO PAINEL
+======================================== */
 
-// Chaves utilizadas no localStorage
-const CHAVE_ANIMAIS = "adoteUmPet_animais";
-const CHAVE_SOLICITACOES = "adoteUmPet_solicitacoes";
-const CHAVE_DOACOES = "adoteUmPet_doacoes";
+auth.onAuthStateChanged(async (user) => {
+
+    if (!user) {
+
+        window.location.href = "login.html";
+
+        return;
+    }
 
 
-// ======================================================
-// DADOS INICIAIS
-// ======================================================
+    try {
 
-const animaisIniciais = [
+        const adminDoc =
+            await db
+                .collection("admins")
+                .doc(user.uid)
+                .get();
+
+
+        if (!adminDoc.exists) {
+
+            await auth.signOut();
+
+            window.location.href =
+                "login.html";
+
+            return;
+        }
+
+
+        const adminData =
+            adminDoc.data();
+
+
+        if (adminData.ativo === false) {
+
+            await auth.signOut();
+
+            window.location.href =
+                "login.html";
+
+            return;
+        }
+
+
+        /*
+         * Usuário autorizado.
+         * O restante do admin.js pode funcionar.
+         */
+
+        console.log(
+            "Administrador autenticado:",
+            user.email
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Erro ao verificar administrador:",
+            error
+        );
+
+        await auth.signOut();
+
+        window.location.href =
+            "login.html";
+    }
+
+});
+
+/* ========================================
+   DADOS INICIAIS
+======================================== */
+
+let animals = [
     {
         id: 1,
-        nome: "Thor",
-        tipo: "Cachorro",
-        idade: "2 anos",
-        imagem: "imagens/thor.jpg",
-        status: "Disponível"
+        name: "Thor",
+        age: "2 anos",
+        gender: "Macho",
+        type: "Cachorro",
+        image: "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=600&q=80",
+        description: "Carinhoso, brincalhão e muito amigável."
     },
+
     {
         id: 2,
-        nome: "Luna",
-        tipo: "Gato",
-        idade: "1 ano",
-        imagem: "imagens/luna.jpg",
-        status: "Disponível"
+        name: "Luna",
+        age: "1 ano",
+        gender: "Fêmea",
+        type: "Gato",
+        image: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=600&q=80",
+        description: "Uma gatinha tranquila e muito carinhosa."
     },
+
     {
         id: 3,
-        nome: "Bidu",
-        tipo: "Cachorro",
-        idade: "3 anos",
-        imagem: "imagens/bidu.jpg",
-        status: "Adotado"
+        name: "Bidu",
+        age: "3 anos",
+        gender: "Macho",
+        type: "Cachorro",
+        image: "https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=600&q=80",
+        description: "Companheiro, alegre e cheio de energia."
     },
+
     {
         id: 4,
-        nome: "Mel",
-        tipo: "Gato",
-        idade: "2 anos",
-        imagem: "imagens/mel.jpg",
-        status: "Disponível"
+        name: "Mel",
+        age: "1 ano",
+        gender: "Fêmea",
+        type: "Coelho",
+        image: "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=600&q=80",
+        description: "Doce, calma e muito delicada."
     },
+
     {
         id: 5,
-        nome: "Amora",
-        tipo: "Coelho",
-        idade: "1 ano",
-        imagem: "imagens/amora.jpg",
-        status: "Disponível"
+        name: "Amora",
+        age: "2 anos",
+        gender: "Fêmea",
+        type: "Cachorro",
+        image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80",
+        description: "Amorosa e ótima companhia para famílias."
     },
+
     {
         id: 6,
-        nome: "Mingau",
-        tipo: "Gato",
-        idade: "4 anos",
-        imagem: "imagens/mingau.jpg",
-        status: "Adotado"
+        name: "Mingau",
+        age: "2 anos",
+        gender: "Macho",
+        type: "Gato",
+        image: "https://images.unsplash.com/photo-1511044568932-338cba0ad803?auto=format&fit=crop&w=600&q=80",
+        description: "Um gato independente, mas muito carinhoso."
     }
 ];
 
 
-const solicitacoesIniciais = [
+let requests = [
+
     {
         id: 1,
-        nome: "Maria Silva",
-        email: "maria@email.com",
-        telefone: "(62) 99999-1111",
         animal: "Thor",
-        data: "15/09/2026",
+        animalId: 1,
+        adopter: "Maria",
+        city: "Goiânia - GO",
+        date: "16/09/2025",
         status: "Pendente"
     },
+
     {
         id: 2,
-        nome: "João Santos",
-        email: "joao@email.com",
-        telefone: "(62) 99999-2222",
         animal: "Luna",
-        data: "14/09/2026",
-        status: "Aprovada"
+        animalId: 2,
+        adopter: "Pedro",
+        city: "Aparecida de Goiânia",
+        date: "15/09/2025",
+        status: "Pendente"
     },
+
     {
         id: 3,
-        nome: "Ana Oliveira",
-        email: "ana@email.com",
-        telefone: "(62) 99999-3333",
-        animal: "Amora",
-        data: "13/09/2026",
+        animal: "Mingau",
+        animalId: 6,
+        adopter: "Ana",
+        city: "Goiânia",
+        date: "14/09/2025",
+        status: "Aprovada"
+    },
+
+    {
+        id: 4,
+        animal: "Mel",
+        animalId: 4,
+        adopter: "Lucas",
+        city: "Trindade",
+        date: "13/09/2025",
         status: "Pendente"
     }
+
 ];
 
 
-// ======================================================
-// INICIALIZAÇÃO DO LOCALSTORAGE
-// ======================================================
+/* ========================================
+   ELEMENTOS
+======================================== */
 
-function inicializarDados() {
+const menuItems =
+    document.querySelectorAll(".menu-item");
 
-    if (!localStorage.getItem(CHAVE_ANIMAIS)) {
-        localStorage.setItem(
-            CHAVE_ANIMAIS,
-            JSON.stringify(animaisIniciais)
-        );
-    }
+const sections =
+    document.querySelectorAll(".page-section");
 
-    if (!localStorage.getItem(CHAVE_SOLICITACOES)) {
-        localStorage.setItem(
-            CHAVE_SOLICITACOES,
-            JSON.stringify(solicitacoesIniciais)
-        );
-    }
-
-    if (!localStorage.getItem(CHAVE_DOACOES)) {
-        localStorage.setItem(
-            CHAVE_DOACOES,
-            JSON.stringify([])
-        );
-    }
-}
+const pageTitle =
+    document.getElementById("pageTitle");
 
 
-// ======================================================
-// FUNÇÕES PARA LER OS DADOS
-// ======================================================
+/* ========================================
+   NAVEGAÇÃO
+======================================== */
 
-function obterAnimais() {
+function showSection(sectionName) {
 
-    return JSON.parse(
-        localStorage.getItem(CHAVE_ANIMAIS)
-    ) || [];
-}
+    sections.forEach(section => {
+        section.classList.remove("active");
+    });
 
-
-function obterSolicitacoes() {
-
-    return JSON.parse(
-        localStorage.getItem(CHAVE_SOLICITACOES)
-    ) || [];
-}
+    menuItems.forEach(item => {
+        item.classList.remove("active");
+    });
 
 
-function obterDoacoes() {
+    const selectedSection =
+        document.getElementById(sectionName);
 
-    return JSON.parse(
-        localStorage.getItem(CHAVE_DOACOES)
-    ) || [];
-}
-
-
-// ======================================================
-// SALVAR DADOS
-// ======================================================
-
-function salvarAnimais(animais) {
-
-    localStorage.setItem(
-        CHAVE_ANIMAIS,
-        JSON.stringify(animais)
-    );
-}
-
-
-function salvarSolicitacoes(solicitacoes) {
-
-    localStorage.setItem(
-        CHAVE_SOLICITACOES,
-        JSON.stringify(solicitacoes)
-    );
-}
-
-
-// ======================================================
-// ATUALIZAR RESUMO
-// ======================================================
-
-function atualizarResumo() {
-
-    const animais = obterAnimais();
-    const solicitacoes = obterSolicitacoes();
-    const doacoes = obterDoacoes();
-
-    const totalAnimais = document.getElementById("totalAnimais");
-    const totalSolicitacoes = document.getElementById("totalSolicitacoes");
-    const totalAdocoes = document.getElementById("totalAdocoes");
-    const totalDoacoes = document.getElementById("totalDoacoes");
-
-
-    if (totalAnimais) {
-        totalAnimais.textContent = animais.length;
-    }
-
-
-    if (totalSolicitacoes) {
-
-        const pendentes = solicitacoes.filter(
-            solicitacao => solicitacao.status === "Pendente"
+    const selectedMenu =
+        document.querySelector(
+            `.menu-item[data-section="${sectionName}"]`
         );
 
-        totalSolicitacoes.textContent = pendentes.length;
+
+    if (selectedSection) {
+        selectedSection.classList.add("active");
+    }
+
+    if (selectedMenu) {
+        selectedMenu.classList.add("active");
     }
 
 
-    if (totalAdocoes) {
+    const titles = {
 
-        const adotados = animais.filter(
-            animal => animal.status === "Adotado"
-        );
+        dashboard: "Dashboard",
 
-        totalAdocoes.textContent = adotados.length;
-    }
+        animais: "Animais cadastrados",
 
+        adicionar: "Adicionar animal",
 
-    if (totalDoacoes) {
+        solicitacoes: "Solicitações de adoção",
 
-        const total = doacoes.reduce(
-            (soma, doacao) => soma + Number(doacao.valor || 0),
-            0
-        );
+        remover: "Remover animal"
 
-        totalDoacoes.textContent = total.toLocaleString(
-            "pt-BR",
-            {
-                style: "currency",
-                currency: "BRL"
-            }
-        );
-    }
-}
+    };
 
 
-// ======================================================
-// RENDERIZAR ANIMAIS
-// ======================================================
-
-function renderizarAnimais() {
-
-    const tabela = document.getElementById("tabelaAnimais");
-
-    if (!tabela) return;
-
-    const animais = obterAnimais();
-
-    tabela.innerHTML = "";
+    pageTitle.textContent =
+        titles[sectionName] || "Painel Admin";
 
 
-    if (animais.length === 0) {
-
-        tabela.innerHTML = `
-            <tr>
-                <td colspan="5" style="text-align:center;">
-                    Nenhum animal cadastrado.
-                </td>
-            </tr>
-        `;
-
-        return;
-    }
-
-
-    animais.forEach(animal => {
-
-        const linha = document.createElement("tr");
-
-        const classeStatus =
-            animal.status === "Adotado"
-                ? "status-adotado"
-                : "status-disponivel";
-
-
-        linha.innerHTML = `
-            <td>
-                <div class="animal-tabela">
-
-                    <img
-                        src="${animal.imagem || "imagens/pet.jpg"}"
-                        alt="${animal.nome}"
-                        onerror="this.style.display='none'"
-                    >
-
-                    <strong>${animal.nome}</strong>
-
-                </div>
-            </td>
-
-            <td>${animal.tipo}</td>
-
-            <td>${animal.idade}</td>
-
-            <td>
-                <span class="${classeStatus}">
-                    ${animal.status}
-                </span>
-            </td>
-
-            <td>
-
-                <div class="acoes">
-
-                    <button
-                        type="button"
-                        class="btn-editar"
-                        data-id="${animal.id}"
-                        title="Editar"
-                    >
-                        ✏️
-                    </button>
-
-                    <button
-                        type="button"
-                        class="btn-excluir"
-                        data-id="${animal.id}"
-                        title="Excluir"
-                    >
-                        🗑️
-                    </button>
-
-                </div>
-
-            </td>
-        `;
-
-
-        tabela.appendChild(linha);
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
 }
 
 
-// ======================================================
-// RENDERIZAR SOLICITAÇÕES
-// ======================================================
+menuItems.forEach(item => {
 
-function renderizarSolicitacoes() {
+    item.addEventListener("click", () => {
 
-    const tabela = document.getElementById(
-        "tabelaSolicitacoes"
-    );
+        const section =
+            item.dataset.section;
 
-    if (!tabela) return;
+        showSection(section);
 
-    const solicitacoes = obterSolicitacoes();
-
-    tabela.innerHTML = "";
-
-
-    if (solicitacoes.length === 0) {
-
-        tabela.innerHTML = `
-            <tr>
-                <td colspan="5" style="text-align:center;">
-                    Nenhuma solicitação encontrada.
-                </td>
-            </tr>
-        `;
-
-        return;
-    }
-
-
-    solicitacoes.forEach(solicitacao => {
-
-        const linha = document.createElement("tr");
-
-
-        let classeStatus = "status-pendente";
-
-        if (solicitacao.status === "Aprovada") {
-            classeStatus = "status-aprovada";
-        }
-
-        if (solicitacao.status === "Recusada") {
-            classeStatus = "status-recusada";
-        }
-
-
-        linha.innerHTML = `
-
-            <td>
-                <strong>${solicitacao.nome}</strong>
-            </td>
-
-            <td>${solicitacao.animal}</td>
-
-            <td>${solicitacao.data}</td>
-
-            <td>
-                <span class="${classeStatus}">
-                    ${solicitacao.status}
-                </span>
-            </td>
-
-            <td>
-
-                <div class="acoes">
-
-                    <button
-                        type="button"
-                        class="btn-ver"
-                        data-id="${solicitacao.id}"
-                        title="Ver detalhes"
-                    >
-                        👁️
-                    </button>
-
-                    ${
-                        solicitacao.status === "Pendente"
-                        ? `
-                            <button
-                                type="button"
-                                class="btn-aprovar"
-                                data-id="${solicitacao.id}"
-                                title="Aprovar"
-                            >
-                                ✅
-                            </button>
-
-                            <button
-                                type="button"
-                                class="btn-recusar"
-                                data-id="${solicitacao.id}"
-                                title="Recusar"
-                            >
-                                ❌
-                            </button>
-                        `
-                        : ""
-                    }
-
-                </div>
-
-            </td>
-        `;
-
-
-        tabela.appendChild(linha);
     });
-}
 
-
-// ======================================================
-// MODAL DE ANIMAL
-// ======================================================
-
-const modal = document.getElementById("modalAnimal");
-
-const formAnimal = document.getElementById("formAnimal");
-
-const tituloModal = document.getElementById(
-    "tituloModalAnimal"
-);
-
-
-function abrirModalAdicionar() {
-
-    if (!modal || !formAnimal) return;
-
-    formAnimal.reset();
-
-    document.getElementById("animalId").value = "";
-
-    tituloModal.textContent = "Adicionar animal";
-
-    modal.classList.add("ativo");
-}
-
-
-function abrirModalEditar(id) {
-
-    const animais = obterAnimais();
-
-    const animal = animais.find(
-        item => Number(item.id) === Number(id)
-    );
-
-    if (!animal) return;
-
-
-    document.getElementById("animalId").value =
-        animal.id;
-
-    document.getElementById("nomeAnimal").value =
-        animal.nome;
-
-    document.getElementById("tipoAnimal").value =
-        animal.tipo;
-
-    document.getElementById("idadeAnimal").value =
-        animal.idade;
-
-    document.getElementById("imagemAnimal").value =
-        animal.imagem || "";
-
-    document.getElementById("statusAnimal").value =
-        animal.status;
-
-
-    tituloModal.textContent = "Editar animal";
-
-    modal.classList.add("ativo");
-}
-
-
-function fecharModal() {
-
-    if (!modal) return;
-
-    modal.classList.remove("ativo");
-}
-
-
-// ======================================================
-// SALVAR ANIMAL
-// ======================================================
-
-function salvarAnimal(event) {
-
-    event.preventDefault();
-
-
-    const id = document.getElementById(
-        "animalId"
-    ).value;
-
-
-    const nome = document.getElementById(
-        "nomeAnimal"
-    ).value.trim();
-
-
-    const tipo = document.getElementById(
-        "tipoAnimal"
-    ).value;
-
-
-    const idade = document.getElementById(
-        "idadeAnimal"
-    ).value.trim();
-
-
-    const imagem = document.getElementById(
-        "imagemAnimal"
-    ).value.trim();
-
-
-    const status = document.getElementById(
-        "statusAnimal"
-    ).value;
-
-
-    if (!nome || !tipo || !idade) {
-
-        alert("Preencha todos os campos obrigatórios.");
-
-        return;
-    }
-
-
-    const animais = obterAnimais();
-
-
-    if (id) {
-
-        const indice = animais.findIndex(
-            animal => Number(animal.id) === Number(id)
-        );
-
-
-        if (indice !== -1) {
-
-            animais[indice] = {
-                ...animais[indice],
-                nome,
-                tipo,
-                idade,
-                imagem,
-                status
-            };
-
-        }
-
-    } else {
-
-        const novoAnimal = {
-
-            id: Date.now(),
-
-            nome,
-
-            tipo,
-
-            idade,
-
-            imagem,
-
-            status
-        };
-
-
-        animais.push(novoAnimal);
-    }
-
-
-    salvarAnimais(animais);
-
-    renderizarAnimais();
-
-    atualizarResumo();
-
-    fecharModal();
-
-    alert(
-        id
-            ? "Animal atualizado com sucesso!"
-            : "Animal adicionado com sucesso!"
-    );
-}
-
-
-// ======================================================
-// EXCLUIR ANIMAL
-// ======================================================
-
-function excluirAnimal(id) {
-
-    const animais = obterAnimais();
-
-    const animal = animais.find(
-        item => Number(item.id) === Number(id)
-    );
-
-
-    if (!animal) return;
-
-
-    const confirmar = confirm(
-        `Deseja realmente excluir ${animal.nome}?`
-    );
-
-
-    if (!confirmar) return;
-
-
-    const novosAnimais = animais.filter(
-        item => Number(item.id) !== Number(id)
-    );
-
-
-    salvarAnimais(novosAnimais);
-
-    renderizarAnimais();
-
-    atualizarResumo();
-
-
-    alert("Animal excluído com sucesso!");
-}
-
-
-// ======================================================
-// VER DETALHES DA SOLICITAÇÃO
-// ======================================================
-
-function verSolicitacao(id) {
-
-    const solicitacoes = obterSolicitacoes();
-
-    const solicitacao = solicitacoes.find(
-        item => Number(item.id) === Number(id)
-    );
-
-
-    if (!solicitacao) return;
-
-
-    alert(
-        `DETALHES DA SOLICITAÇÃO\n\n` +
-
-        `Nome: ${solicitacao.nome}\n` +
-
-        `E-mail: ${solicitacao.email}\n` +
-
-        `Telefone: ${solicitacao.telefone}\n` +
-
-        `Animal: ${solicitacao.animal}\n` +
-
-        `Data: ${solicitacao.data}\n` +
-
-        `Status: ${solicitacao.status}`
-    );
-}
-
-
-// ======================================================
-// APROVAR SOLICITAÇÃO
-// ======================================================
-
-function aprovarSolicitacao(id) {
-
-    const solicitacoes = obterSolicitacoes();
-
-    const solicitacao = solicitacoes.find(
-        item => Number(item.id) === Number(id)
-    );
-
-
-    if (!solicitacao) return;
-
-
-    const confirmar = confirm(
-        `Aprovar a adoção de ${solicitacao.animal} para ${solicitacao.nome}?`
-    );
-
-
-    if (!confirmar) return;
-
-
-    solicitacao.status = "Aprovada";
-
-
-    salvarSolicitacoes(solicitacoes);
-
-
-    // Também muda o status do animal
-    const animais = obterAnimais();
-
-    const animal = animais.find(
-        item =>
-            item.nome.toLowerCase() ===
-            solicitacao.animal.toLowerCase()
-    );
-
-
-    if (animal) {
-
-        animal.status = "Adotado";
-
-        salvarAnimais(animais);
-    }
-
-
-    renderizarSolicitacoes();
-
-    renderizarAnimais();
-
-    atualizarResumo();
-
-
-    alert("Solicitação aprovada!");
-}
-
-
-// ======================================================
-// RECUSAR SOLICITAÇÃO
-// ======================================================
-
-function recusarSolicitacao(id) {
-
-    const solicitacoes = obterSolicitacoes();
-
-    const solicitacao = solicitacoes.find(
-        item => Number(item.id) === Number(id)
-    );
-
-
-    if (!solicitacao) return;
-
-
-    const confirmar = confirm(
-        `Deseja recusar a solicitação de ${solicitacao.nome}?`
-    );
-
-
-    if (!confirmar) return;
-
-
-    solicitacao.status = "Recusada";
-
-
-    salvarSolicitacoes(solicitacoes);
-
-
-    renderizarSolicitacoes();
-
-    atualizarResumo();
-
-
-    alert("Solicitação recusada.");
-}
-
-
-// ======================================================
-// EVENTOS DA TABELA DE ANIMAIS
-// ======================================================
-
-document.addEventListener("click", function(event) {
-
-    const botaoEditar =
-        event.target.closest(".btn-editar");
-
-
-    const botaoExcluir =
-        event.target.closest(".btn-excluir");
-
-
-    const botaoVer =
-        event.target.closest(".btn-ver");
-
-
-    const botaoAprovar =
-        event.target.closest(".btn-aprovar");
-
-
-    const botaoRecusar =
-        event.target.closest(".btn-recusar");
-
-
-    if (botaoEditar) {
-
-        abrirModalEditar(
-            botaoEditar.dataset.id
-        );
-
-        return;
-    }
-
-
-    if (botaoExcluir) {
-
-        excluirAnimal(
-            botaoExcluir.dataset.id
-        );
-
-        return;
-    }
-
-
-    if (botaoVer) {
-
-        verSolicitacao(
-            botaoVer.dataset.id
-        );
-
-        return;
-    }
-
-
-    if (botaoAprovar) {
-
-        aprovarSolicitacao(
-            botaoAprovar.dataset.id
-        );
-
-        return;
-    }
-
-
-    if (botaoRecusar) {
-
-        recusarSolicitacao(
-            botaoRecusar.dataset.id
-        );
-
-        return;
-    }
 });
 
 
-// ======================================================
-// BOTÕES DO MODAL
-// ======================================================
+/* BOTÕES QUE LEVAM PARA OUTRAS SEÇÕES */
 
-const btnAdicionarAnimal =
-    document.getElementById("btnAdicionarAnimal");
+document
+    .querySelectorAll("[data-section-button]")
+    .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            showSection(
+                button.dataset.sectionButton
+            );
+
+        });
+
+    });
 
 
-const btnFecharModal =
-    document.getElementById("btnFecharModal");
+/* ========================================
+   RENDERIZAR ANIMAIS
+======================================== */
+
+function renderAnimals(search = "") {
+
+    const grid =
+        document.getElementById("animalsGrid");
+
+    const filteredAnimals =
+        animals.filter(animal =>
+            animal.name
+                .toLowerCase()
+                .includes(search.toLowerCase())
+        );
 
 
-const btnCancelarAnimal =
-    document.getElementById("btnCancelarAnimal");
+    grid.innerHTML = "";
 
 
-if (btnAdicionarAnimal) {
+    if (filteredAnimals.length === 0) {
 
-    btnAdicionarAnimal.addEventListener(
-        "click",
-        abrirModalAdicionar
-    );
+        grid.innerHTML = `
+            <div class="empty-message">
+                Nenhum animal encontrado.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    filteredAnimals.forEach(animal => {
+
+        const card =
+            document.createElement("article");
+
+        card.className = "animal-card";
+
+        card.innerHTML = `
+
+            <img
+                src="${animal.image}"
+                alt="${animal.name}"
+            >
+
+            <div class="animal-content">
+
+                <h3>${animal.name}</h3>
+
+                <div class="animal-meta">
+                    ${animal.age} •
+                    ${animal.gender} •
+                    ${animal.type}
+                </div>
+
+                <p class="animal-description">
+                    ${animal.description}
+                </p>
+
+                <div class="animal-actions">
+
+                    <button
+                        class="edit-button"
+                        onclick="editAnimal(${animal.id})"
+                    >
+                        Editar
+                    </button>
+
+                    <button
+                        class="delete-button"
+                        onclick="deleteAnimal(${animal.id})"
+                    >
+                        Remover
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+        grid.appendChild(card);
+
+    });
+
 }
 
 
-if (btnFecharModal) {
+/* ========================================
+   RENDERIZAR REMOÇÃO
+======================================== */
 
-    btnFecharModal.addEventListener(
-        "click",
-        fecharModal
-    );
+function renderRemoveAnimals() {
+
+    const grid =
+        document.getElementById("removeGrid");
+
+    grid.innerHTML = "";
+
+
+    animals.forEach(animal => {
+
+        const card =
+            document.createElement("article");
+
+        card.className = "remove-card";
+
+        card.innerHTML = `
+
+            <img
+                src="${animal.image}"
+                alt="${animal.name}"
+            >
+
+            <div class="remove-card-content">
+
+                <h3>${animal.name}</h3>
+
+                <p>
+                    ${animal.age} •
+                    ${animal.gender}
+                </p>
+
+                <button
+                    class="remove-button"
+                    onclick="deleteAnimal(${animal.id})"
+                >
+                    Remover animal
+                </button>
+
+            </div>
+
+        `;
+
+        grid.appendChild(card);
+
+    });
+
 }
 
 
-if (btnCancelarAnimal) {
+/* ========================================
+   RENDERIZAR SOLICITAÇÕES
+======================================== */
 
-    btnCancelarAnimal.addEventListener(
-        "click",
-        fecharModal
-    );
-}
+function renderRequests() {
 
+    const container =
+        document.getElementById("requestsContainer");
 
-if (formAnimal) {
-
-    formAnimal.addEventListener(
-        "submit",
-        salvarAnimal
-    );
-}
+    const dashboard =
+        document.getElementById("dashboardRequests");
 
 
-// ======================================================
-// FECHAR MODAL CLICANDO FORA
-// ======================================================
+    container.innerHTML = "";
 
-if (modal) {
-
-    modal.addEventListener(
-        "click",
-        function(event) {
-
-            if (event.target === modal) {
-
-                fecharModal();
-            }
-        }
-    );
-}
+    dashboard.innerHTML = "";
 
 
-// ======================================================
-// BOTÃO SAIR
-// ======================================================
+    requests.forEach(request => {
 
-const btnSair =
-    document.getElementById("btnSair");
-
-
-if (btnSair) {
-
-    btnSair.addEventListener(
-        "click",
-        function() {
-
-            const confirmar = confirm(
-                "Deseja sair do painel administrativo?"
+        const animal =
+            animals.find(
+                animal => animal.id === request.animalId
             );
 
 
-            if (confirmar) {
+        const image =
+            animal
+                ? animal.image
+                : "";
 
-                window.location.href = "index.html";
+
+        /* DASHBOARD */
+
+        const dashboardRow =
+            document.createElement("div");
+
+        dashboardRow.className =
+            "request-row";
+
+
+        dashboardRow.innerHTML = `
+
+            <img
+                src="${image}"
+                class="request-image"
+                alt="${request.animal}"
+            >
+
+            <div class="request-info">
+
+                <strong>
+                    Solicitação #${String(request.id).padStart(3, "0")}
+                </strong>
+
+                <span>
+                    ${request.animal} •
+                    ${request.adopter}
+                </span>
+
+            </div>
+
+            <span class="status ${getStatusClass(request.status)}">
+                ${request.status}
+            </span>
+
+        `;
+
+
+        dashboard.appendChild(dashboardRow);
+
+
+        /* SOLICITAÇÕES */
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "request-card";
+
+
+        card.innerHTML = `
+
+            <img
+                src="${image}"
+                class="request-card-image"
+                alt="${request.animal}"
+            >
+
+
+            <div class="request-card-content">
+
+                <div class="request-card-top">
+
+                    <h3>
+                        Solicitação #${String(request.id).padStart(3, "0")}
+                    </h3>
+
+                    <span class="status ${getStatusClass(request.status)}">
+                        ${request.status}
+                    </span>
+
+                </div>
+
+
+                <div class="request-details">
+
+                    <div class="detail">
+                        <strong>Animal:</strong>
+                        <span>${request.animal}</span>
+                    </div>
+
+                    <div class="detail">
+                        <strong>Adotante:</strong>
+                        <span>${request.adopter}</span>
+                    </div>
+
+                    <div class="detail">
+                        <strong>Cidade:</strong>
+                        <span>${request.city}</span>
+                    </div>
+
+                    <div class="detail">
+                        <strong>Data:</strong>
+                        <span>${request.date}</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            ${
+                request.status === "Pendente"
+                ?
+                `
+                <div class="request-actions">
+
+                    <button
+                        class="approve-button"
+                        onclick="approveRequest(${request.id})"
+                    >
+                        Aprovar
+                    </button>
+
+                    <button
+                        class="reject-button"
+                        onclick="rejectRequest(${request.id})"
+                    >
+                        Recusar
+                    </button>
+
+                </div>
+                `
+                :
+                ""
             }
-        }
-    );
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+
+    updateStats();
+
 }
 
 
-// ======================================================
-// INICIALIZAR PAINEL
-// ======================================================
+/* ========================================
+   STATUS
+======================================== */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
+function getStatusClass(status) {
 
-        inicializarDados();
+    if (status === "Aprovada") {
+        return "approved";
+    }
 
-        renderizarAnimais();
+    if (status === "Recusada") {
+        return "rejected";
+    }
 
-        renderizarSolicitacoes();
+    return "pending";
+}
 
-        atualizarResumo();
+
+/* ========================================
+   ESTATÍSTICAS
+======================================== */
+
+function updateStats() {
+
+    document.getElementById(
+        "totalAnimals"
+    ).textContent = animals.length;
+
+
+    document.getElementById(
+        "totalRequests"
+    ).textContent = requests.length;
+
+
+    document.getElementById(
+        "pendingRequests"
+    ).textContent =
+        requests.filter(
+            request => request.status === "Pendente"
+        ).length;
+
+
+    document.getElementById(
+        "approvedRequests"
+    ).textContent =
+        requests.filter(
+            request => request.status === "Aprovada"
+        ).length;
+
+}
+
+
+/* ========================================
+   APROVAR SOLICITAÇÃO
+======================================== */
+
+function approveRequest(id) {
+
+    const request =
+        requests.find(
+            request => request.id === id
+        );
+
+
+    if (!request) return;
+
+
+    request.status = "Aprovada";
+
+
+    renderRequests();
+
+
+    showNotification(
+        "Solicitação aprovada com sucesso! 💚"
+    );
+
+}
+
+
+/* ========================================
+   RECUSAR SOLICITAÇÃO
+======================================== */
+
+function rejectRequest(id) {
+
+    const request =
+        requests.find(
+            request => request.id === id
+        );
+
+
+    if (!request) return;
+
+
+    request.status = "Recusada";
+
+
+    renderRequests();
+
+
+    showNotification(
+        "Solicitação recusada."
+    );
+
+}
+
+
+/* ========================================
+   ADICIONAR ANIMAL
+======================================== */
+
+document
+    .getElementById("animalForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const newAnimal = {
+
+            id:
+                Date.now(),
+
+            name:
+                document.getElementById(
+                    "animalName"
+                ).value,
+
+            age:
+                document.getElementById(
+                    "animalAge"
+                ).value,
+
+            gender:
+                document.getElementById(
+                    "animalGender"
+                ).value,
+
+            type:
+                document.getElementById(
+                    "animalType"
+                ).value,
+
+            image:
+                document.getElementById(
+                    "animalImage"
+                ).value,
+
+            description:
+                document.getElementById(
+                    "animalDescription"
+                ).value ||
+                "Um pet esperando por uma família."
+        };
+
+
+        animals.push(newAnimal);
+
+
+        this.reset();
+
+
+        renderAnimals();
+
+        renderRemoveAnimals();
+
+        updateStats();
+
+
+        showNotification(
+            `${newAnimal.name} foi cadastrado com sucesso! 🐾`
+        );
+
+
+        showSection("animais");
+
+    });
+
+
+/* ========================================
+   REMOVER ANIMAL
+======================================== */
+
+function deleteAnimal(id) {
+
+    const animal =
+        animals.find(
+            animal => animal.id === id
+        );
+
+
+    if (!animal) return;
+
+
+    openModal(
+        `Deseja realmente remover o animal ${animal.name}?`,
+        () => {
+
+            animals =
+                animals.filter(
+                    animal => animal.id !== id
+                );
+
+
+            renderAnimals();
+
+            renderRemoveAnimals();
+
+            renderRequests();
+
+            updateStats();
+
+
+            showNotification(
+                `${animal.name} foi removido do sistema.`
+            );
+
+        }
+    );
+
+}
+
+
+/* ========================================
+   EDITAR ANIMAL
+======================================== */
+
+function editAnimal(id) {
+
+    const animal =
+        animals.find(
+            animal => animal.id === id
+        );
+
+
+    if (!animal) return;
+
+
+    document.getElementById(
+        "animalName"
+    ).value = animal.name;
+
+
+    document.getElementById(
+        "animalAge"
+    ).value = animal.age;
+
+
+    document.getElementById(
+        "animalGender"
+    ).value = animal.gender;
+
+
+    document.getElementById(
+        "animalType"
+    ).value = animal.type;
+
+
+    document.getElementById(
+        "animalImage"
+    ).value = animal.image;
+
+
+    document.getElementById(
+        "animalDescription"
+    ).value = animal.description;
+
+
+    animals =
+        animals.filter(
+            animal => animal.id !== id
+        );
+
+
+    showSection("adicionar");
+
+
+    showNotification(
+        "Edite as informações e cadastre novamente."
+    );
+
+}
+
+
+/* ========================================
+   BUSCA
+======================================== */
+
+document
+    .getElementById("animalSearch")
+    .addEventListener("input", function() {
+
+        renderAnimals(this.value);
+
+    });
+
+
+/* ========================================
+   MODAL
+======================================== */
+
+const modalOverlay =
+    document.getElementById("modalOverlay");
+
+const modalMessage =
+    document.getElementById("modalMessage");
+
+const confirmModal =
+    document.getElementById("confirmModal");
+
+const closeModal =
+    document.getElementById("closeModal");
+
+const cancelModal =
+    document.getElementById("cancelModal");
+
+
+let modalAction = null;
+
+
+function openModal(message, action) {
+
+    modalMessage.textContent = message;
+
+    modalAction = action;
+
+    modalOverlay.classList.add("active");
+
+}
+
+
+function closeModalWindow() {
+
+    modalOverlay.classList.remove("active");
+
+    modalAction = null;
+
+}
+
+
+confirmModal.addEventListener(
+    "click",
+    () => {
+
+        if (modalAction) {
+            modalAction();
+        }
+
+        closeModalWindow();
 
     }
 );
+
+
+closeModal.addEventListener(
+    "click",
+    closeModalWindow
+);
+
+
+cancelModal.addEventListener(
+    "click",
+    closeModalWindow
+);
+
+
+modalOverlay.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target === modalOverlay
+        ) {
+            closeModalWindow();
+        }
+
+    }
+);
+
+
+/* ========================================
+   NOTIFICAÇÃO
+======================================== */
+
+function showNotification(message) {
+
+    const notification =
+        document.createElement("div");
+
+
+    notification.textContent =
+        message;
+
+
+    notification.style.position =
+        "fixed";
+
+    notification.style.right =
+        "25px";
+
+    notification.style.bottom =
+        "25px";
+
+    notification.style.background =
+        "#71865f";
+
+    notification.style.color =
+        "white";
+
+    notification.style.padding =
+        "13px 18px";
+
+    notification.style.borderRadius =
+        "10px";
+
+    notification.style.fontSize =
+        "11px";
+
+    notification.style.fontWeight =
+        "500";
+
+    notification.style.boxShadow =
+        "0 8px 25px rgba(0,0,0,.12)";
+
+    notification.style.zIndex =
+        "2000";
+
+
+    document.body.appendChild(
+        notification
+    );
+
+
+    setTimeout(() => {
+
+        notification.remove();
+
+    }, 3000);
+
+}
+
+
+/* ========================================
+   LOGOUT
+======================================== */
+
+document
+    .getElementById("logoutButton")
+    .addEventListener("click", async () => {
+
+        const confirmar =
+            confirm(
+                "Deseja realmente sair do painel?"
+            );
+
+
+        if (!confirmar) {
+            return;
+        }
+
+
+        try {
+
+            await auth.signOut();
+
+            window.location.href =
+                "login.html";
+
+        } catch (error) {
+
+            console.error(
+                "Erro ao sair:",
+                error
+            );
+
+            alert(
+                "Não foi possível sair."
+            );
+
+        }
+
+    });
+
+
+/* ========================================
+   INICIALIZAÇÃO
+======================================== */
+
+renderAnimals();
+
+renderRemoveAnimals();
+
+renderRequests();
+
+updateStats();

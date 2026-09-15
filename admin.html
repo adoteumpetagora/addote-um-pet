@@ -5,350 +5,604 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Painel Administrativo | Adote um Pet</title>
+    <title>Painel Admin | Adote um Pet</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
     <link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
 
-    <!-- CABEÇALHO -->
-    <header class="header">
+    <div class="admin-container">
 
-        <div class="logo">
-            <div class="logo-icon">🐾</div>
+        <!-- =========================
+             MENU LATERAL
+        ========================== -->
 
-            <div class="logo-text">
-                <strong>ADOTE</strong>
-                <span>UM PET</span>
-            </div>
-        </div>
+        <aside class="sidebar">
 
-        <div class="admin-info">
-            <span>Administrador</span>
-            <button id="btnSair" type="button">Sair</button>
-        </div>
+            <div class="sidebar-logo">
 
-    </header>
-
-
-    <!-- CONTEÚDO PRINCIPAL -->
-    <main class="container">
-
-        <section class="titulo">
-            <h1>Painel Administrativo</h1>
-            <p>Gerencie os animais e as solicitações de adoção.</p>
-        </section>
-
-
-        <!-- CARDS DE RESUMO -->
-        <section class="resumo">
-
-            <div class="resumo-card">
-                <div class="resumo-icone">🐶</div>
-
-                <div>
-                    <span>Animais</span>
-                    <strong id="totalAnimais">0</strong>
+                <div class="logo-icon">
+                    🐾
                 </div>
+
+                <div class="logo-text">
+                    <strong>ADOTE</strong>
+                    <span>UM PET</span>
+                </div>
+
             </div>
 
 
-            <div class="resumo-card">
-                <div class="resumo-icone">📋</div>
+            <div class="menu-title">
+                PAINEL ADMIN
+            </div>
 
-                <div>
+
+            <nav class="menu">
+
+                <button
+                    class="menu-item active"
+                    data-section="dashboard"
+                >
+                    <span class="menu-icon">▦</span>
+                    <span>Dashboard</span>
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    data-section="animais"
+                >
+                    <span class="menu-icon">🐾</span>
+                    <span>Animais cadastrados</span>
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    data-section="adicionar"
+                >
+                    <span class="menu-icon">⊕</span>
+                    <span>Adicionar animal</span>
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    data-section="solicitacoes"
+                >
+                    <span class="menu-icon">▣</span>
                     <span>Solicitações</span>
-                    <strong id="totalSolicitacoes">0</strong>
-                </div>
-            </div>
-
-
-            <div class="resumo-card">
-                <div class="resumo-icone">❤️</div>
-
-                <div>
-                    <span>Adoções</span>
-                    <strong id="totalAdocoes">0</strong>
-                </div>
-            </div>
-
-
-            <div class="resumo-card">
-                <div class="resumo-icone">💰</div>
-
-                <div>
-                    <span>Doações</span>
-                    <strong id="totalDoacoes">R$ 0,00</strong>
-                </div>
-            </div>
-
-        </section>
-
-
-        <!-- GERENCIAMENTO DE ANIMAIS -->
-        <section class="admin-section">
-
-            <div class="section-header">
-
-                <div>
-                    <h2>Gerenciar Animais</h2>
-                    <p>Adicione, edite ou remova animais disponíveis.</p>
-                </div>
-
-                <button id="btnAdicionarAnimal" class="btn-principal" type="button">
-                    + Adicionar animal
                 </button>
 
-            </div>
 
-
-            <div class="tabela-container">
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>Animal</th>
-                            <th>Tipo</th>
-                            <th>Idade</th>
-                            <th>Status</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-
-                    <!-- O JS vai preencher esta parte -->
-                    <tbody id="tabelaAnimais"></tbody>
-
-                </table>
-
-            </div>
-
-        </section>
-
-
-        <!-- SOLICITAÇÕES -->
-        <section class="admin-section">
-
-            <div class="section-header">
-
-                <div>
-                    <h2>Solicitações de Adoção</h2>
-                    <p>Gerencie os pedidos recebidos.</p>
-                </div>
-
-            </div>
-
-
-            <div class="tabela-container">
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>Adotante</th>
-                            <th>Animal</th>
-                            <th>Data</th>
-                            <th>Status</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-
-                    <!-- O JS vai preencher esta parte -->
-                    <tbody id="tabelaSolicitacoes"></tbody>
-
-                </table>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- MODAL PARA ADICIONAR / EDITAR ANIMAL -->
-    <div id="modalAnimal" class="modal">
-
-        <div class="modal-conteudo">
-
-            <div class="modal-header">
-
-                <h2 id="tituloModalAnimal">Adicionar animal</h2>
-
-                <button id="btnFecharModal" type="button">
-                    &times;
+                <button
+                    class="menu-item"
+                    data-section="remover"
+                >
+                    <span class="menu-icon">♲</span>
+                    <span>Remover animal</span>
                 </button>
 
-            </div>
+            </nav>
 
 
-            <form id="formAnimal">
+            <button class="logout-button" id="logoutButton">
+                <span>↪</span>
+                Sair
+            </button>
 
-                <input type="hidden" id="animalId">
+        </aside>
 
 
-                <div class="campo">
-                    <label for="nomeAnimal">Nome</label>
+        <!-- =========================
+             CONTEÚDO
+        ========================== -->
 
-                    <input
-                        type="text"
-                        id="nomeAnimal"
-                        placeholder="Ex.: Thor"
-                        required
-                    >
+        <main class="main-content">
+
+            <!-- HEADER -->
+
+            <header class="topbar">
+
+                <div>
+                    <h1 id="pageTitle">Dashboard</h1>
+                    <p>Gerencie os animais e solicitações de adoção.</p>
+                </div>
+
+                <div class="admin-user">
+
+                    <div class="user-avatar">
+                        👩🏻
+                    </div>
+
+                    <div>
+                        <strong>Administrador</strong>
+                        <span>Painel administrativo</span>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 DASHBOARD
+            ========================== -->
+
+            <section
+                class="page-section active"
+                id="dashboard"
+            >
+
+                <div class="welcome-box">
+
+                    <div>
+                        <span class="welcome-small">
+                            Olá, administrador! 🐾
+                        </span>
+
+                        <h2>
+                            Ajude mais pets a encontrarem um lar.
+                        </h2>
+
+                        <p>
+                            Acompanhe os animais cadastrados e
+                            as solicitações de adoção.
+                        </p>
+                    </div>
+
+                    <div class="welcome-paw">
+                        🐾
+                    </div>
+
                 </div>
 
 
-                <div class="linha">
+                <!-- CARDS -->
 
-                    <div class="campo">
+                <div class="stats-grid">
 
-                        <label for="tipoAnimal">Tipo</label>
+                    <div class="stat-card">
 
-                        <select id="tipoAnimal" required>
-                            <option value="">Selecione</option>
-                            <option value="Cachorro">Cachorro</option>
-                            <option value="Gato">Gato</option>
-                            <option value="Coelho">Coelho</option>
-                        </select>
+                        <div class="stat-icon coral">
+                            🐶
+                        </div>
+
+                        <div>
+                            <span>Animais cadastrados</span>
+                            <strong id="totalAnimals">6</strong>
+                        </div>
 
                     </div>
 
 
-                    <div class="campo">
+                    <div class="stat-card">
 
-                        <label for="idadeAnimal">Idade</label>
+                        <div class="stat-icon green">
+                            ♡
+                        </div>
 
-                        <input
-                            type="text"
-                            id="idadeAnimal"
-                            placeholder="Ex.: 2 anos"
-                            required
+                        <div>
+                            <span>Solicitações</span>
+                            <strong id="totalRequests">4</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon yellow">
+                            ⏳
+                        </div>
+
+                        <div>
+                            <span>Pendentes</span>
+                            <strong id="pendingRequests">2</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon pink">
+                            ✓
+                        </div>
+
+                        <div>
+                            <span>Adoções realizadas</span>
+                            <strong id="approvedRequests">1</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SOLICITAÇÕES RECENTES -->
+
+                <div class="content-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Solicitações de Adoção</h3>
+                            <p>Confira as solicitações mais recentes.</p>
+                        </div>
+
+                        <button
+                            class="outline-button"
+                            data-section-button="solicitacoes"
                         >
+                            Ver todas
+                        </button>
 
+                    </div>
+
+
+                    <div
+                        class="request-list"
+                        id="dashboardRequests"
+                    ></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 ANIMAIS
+            ========================== -->
+
+            <section
+                class="page-section"
+                id="animais"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Animais cadastrados</h2>
+                        <p>
+                            Gerencie os pets disponíveis para adoção.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-button"
+                        data-section-button="adicionar"
+                    >
+                        + Adicionar animal
+                    </button>
+
+                </div>
+
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="animalSearch"
+                        placeholder="Buscar animal..."
+                    >
+
+                </div>
+
+
+                <div
+                    class="animals-grid"
+                    id="animalsGrid"
+                ></div>
+
+            </section>
+
+
+            <!-- =========================
+                 ADICIONAR ANIMAL
+            ========================== -->
+
+            <section
+                class="page-section"
+                id="adicionar"
+            >
+
+                <div class="form-card">
+
+                    <div class="form-title">
+
+                        <div class="form-icon">
+                            🐾
+                        </div>
+
+                        <div>
+                            <h2>Adicionar animal</h2>
+                            <p>
+                                Cadastre um novo pet para adoção.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <form id="animalForm">
+
+                        <div class="form-grid">
+
+                            <div class="input-group">
+
+                                <label for="animalName">
+                                    Nome do animal
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="animalName"
+                                    placeholder="Ex: Thor"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label for="animalAge">
+                                    Idade
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="animalAge"
+                                    placeholder="Ex: 2 anos"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label for="animalGender">
+                                    Sexo
+                                </label>
+
+                                <select id="animalGender" required>
+
+                                    <option value="">
+                                        Selecione
+                                    </option>
+
+                                    <option value="Macho">
+                                        Macho
+                                    </option>
+
+                                    <option value="Fêmea">
+                                        Fêmea
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label for="animalType">
+                                    Tipo
+                                </label>
+
+                                <select id="animalType" required>
+
+                                    <option value="">
+                                        Selecione
+                                    </option>
+
+                                    <option value="Cachorro">
+                                        Cachorro
+                                    </option>
+
+                                    <option value="Gato">
+                                        Gato
+                                    </option>
+
+                                    <option value="Coelho">
+                                        Coelho
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="input-group full">
+
+                                <label for="animalImage">
+                                    URL da imagem
+                                </label>
+
+                                <input
+                                    type="url"
+                                    id="animalImage"
+                                    placeholder="https://..."
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="input-group full">
+
+                                <label for="animalDescription">
+                                    Descrição
+                                </label>
+
+                                <textarea
+                                    id="animalDescription"
+                                    placeholder="Conte um pouco sobre esse animal..."
+                                    rows="5"
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="primary-button submit-button"
+                        >
+                            Cadastrar animal
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 SOLICITAÇÕES
+            ========================== -->
+
+            <section
+                class="page-section"
+                id="solicitacoes"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Solicitações de Adoção</h2>
+                        <p>
+                            Analise os pedidos enviados pelos adotantes.
+                        </p>
                     </div>
 
                 </div>
 
 
-                <div class="campo">
+                <div
+                    class="requests-container"
+                    id="requestsContainer"
+                ></div>
 
-                    <label for="imagemAnimal">Imagem</label>
-
-                    <input
-                        type="text"
-                        id="imagemAnimal"
-                        placeholder="Ex.: imagens/thor.jpg"
-                    >
-
-                    <small>
-                        Informe o caminho da imagem.
-                    </small>
-
-                </div>
+            </section>
 
 
-                <div class="campo">
+            <!-- =========================
+                 REMOVER ANIMAL
+            ========================== -->
 
-                    <label for="statusAnimal">Status</label>
+            <section
+                class="page-section"
+                id="remover"
+            >
 
-                    <select id="statusAnimal" required>
-                        <option value="Disponível">Disponível</option>
-                        <option value="Adotado">Adotado</option>
-                    </select>
+                <div class="section-heading">
 
-                </div>
+                    <div>
+                        <h2>Remover animal</h2>
 
-
-                <div class="modal-botoes">
-
-                    <button
-                        type="button"
-                        id="btnCancelarAnimal"
-                        class="btn-cancelar"
-                    >
-                        Cancelar
-                    </button>
-
-                    <button
-                        type="submit"
-                        class="btn-principal"
-                    >
-                        Salvar animal
-                    </button>
+                        <p>
+                            Escolha um animal para retirar do sistema.
+                        </p>
+                    </div>
 
                 </div>
 
-            </form>
+
+                <div
+                    class="remove-grid"
+                    id="removeGrid"
+                ></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL
+    ========================== -->
+
+    <div
+        class="modal-overlay"
+        id="modalOverlay"
+    >
+
+        <div class="modal">
+
+            <button
+                class="close-modal"
+                id="closeModal"
+            >
+                ×
+            </button>
+
+            <div class="modal-icon">
+                🐾
+            </div>
+
+            <h3>Confirmar ação</h3>
+
+            <p id="modalMessage">
+                Deseja realmente realizar esta ação?
+            </p>
+
+            <div class="modal-buttons">
+
+                <button
+                    class="cancel-button"
+                    id="cancelModal"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    class="danger-button"
+                    id="confirmModal"
+                >
+                    Confirmar
+                </button>
+
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- RODAPÉ -->
-    <footer>
-
-        <div class="footer-col">
-
-            <div class="logo-footer">
-
-                <span class="footer-logo">🐾</span>
-
-                <strong>ADOTE<br>UM PET</strong>
-
-                <p>
-                    Conectando animais que precisam de um lar
-                    com pessoas que querem amar.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-col">
-
-            <h3>Links</h3>
-
-            <a href="index.html">Início</a>
-            <a href="animais.html">Animais</a>
-            <a href="como-adotar.html">Como adotar</a>
-
-        </div>
-
-
-        <div class="footer-col">
-
-            <h3>Atendimento</h3>
-
-            <p>Segunda a sexta</p>
-            <p>08:00 às 18:00</p>
-            <p>(62) 9900-8734</p>
-
-        </div>
-
-
-        <div class="footer-col">
-
-            <h3>Ajude</h3>
-
-            <a href="adocao.html">Faça uma doação</a>
-            <a href="contato.html">Entre em contato</a>
-
-        </div>
-
-    </footer>
-
-
-    <!-- JAVASCRIPT DO ADMIN -->
     <script src="admin.js"></script>
+
+    <!-- Firebase -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-storage-compat.js"></script>
+
+<script src="firebase-config.js"></script>
+
+<script src="admin.js"></script>
 
 </body>
 

@@ -1,0 +1,368 @@
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: "Poppins", sans-serif;
+
+    background: #faf7f1;
+
+    color: #292929;
+
+    min-height: 100vh;
+}
+
+
+/* ========================================
+   PÁGINA
+======================================== */
+
+.login-page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            #f8ded8 0,
+            transparent 22%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            #e4eadc 0,
+            transparent 25%
+        ),
+        #faf7f1;
+}
+
+
+/* ========================================
+   CARD
+======================================== */
+
+.login-card {
+
+    width: 100%;
+
+    max-width: 420px;
+
+    background: #fffdf9;
+
+    border: 1px solid #e9e2d8;
+
+    border-radius: 22px;
+
+    padding: 38px;
+
+    box-shadow:
+        0 15px 45px rgba(70, 60, 45, .08);
+}
+
+
+/* ========================================
+   LOGO
+======================================== */
+
+.login-logo {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 30px;
+}
+
+
+.logo-pata {
+
+    width: 52px;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #f8c0b7;
+
+    border-radius: 15px;
+
+    font-size: 25px;
+}
+
+
+.logo-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    line-height: 1.05;
+}
+
+
+.logo-text strong {
+
+    font-size: 17px;
+}
+
+
+.logo-text span {
+
+    font-size: 17px;
+
+    font-weight: 600;
+}
+
+
+/* ========================================
+   TÍTULO
+======================================== */
+
+.login-title {
+
+    text-align: center;
+
+    margin-bottom: 28px;
+}
+
+
+.login-title h1 {
+
+    font-size: 25px;
+
+    margin-bottom: 6px;
+}
+
+
+.login-title p {
+
+    color: #77736d;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   CAMPOS
+======================================== */
+
+.campo {
+
+    margin-bottom: 17px;
+}
+
+
+.campo label {
+
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    margin-bottom: 6px;
+}
+
+
+.campo input {
+
+    width: 100%;
+
+    padding: 12px 13px;
+
+    border: 1px solid #e4ddd3;
+
+    border-radius: 9px;
+
+    background: #fffdf9;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    color: #292929;
+
+    transition: .2s;
+}
+
+
+.campo input:focus {
+
+    border-color: #ed8a7d;
+
+    box-shadow:
+        0 0 0 3px rgba(237,138,125,.08);
+}
+
+
+/* ========================================
+   SENHA
+======================================== */
+
+.senha-container {
+
+    position: relative;
+}
+
+
+.senha-container input {
+
+    padding-right: 45px;
+}
+
+
+.senha-container button {
+
+    position: absolute;
+
+    right: 8px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    opacity: .65;
+}
+
+
+/* ========================================
+   MENSAGEM
+======================================== */
+
+.mensagem {
+
+    min-height: 18px;
+
+    margin-bottom: 8px;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    color: #c45f57;
+}
+
+
+/* ========================================
+   BOTÃO
+======================================== */
+
+.botao-entrar {
+
+    width: 100%;
+
+    border: none;
+
+    background: #ed8a7d;
+
+    color: white;
+
+    padding: 13px;
+
+    border-radius: 9px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+
+.botao-entrar:hover {
+
+    background: #e77d70;
+
+    transform: translateY(-1px);
+}
+
+
+.botao-entrar:disabled {
+
+    opacity: .6;
+
+    cursor: wait;
+
+    transform: none;
+}
+
+
+/* ========================================
+   VOLTAR
+======================================== */
+
+.voltar {
+
+    display: block;
+
+    text-align: center;
+
+    margin-top: 22px;
+
+    color: #71865f;
+
+    font-size: 11px;
+
+    text-decoration: none;
+}
+
+
+.voltar:hover {
+
+    text-decoration: underline;
+}
+
+
+/* ========================================
+   RESPONSIVO
+======================================== */
+
+@media (max-width: 500px) {
+
+    .login-page {
+        padding: 15px;
+    }
+
+    .login-card {
+        padding: 28px 22px;
+    }
+
+}
