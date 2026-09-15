@@ -4,59 +4,116 @@
 
 auth.onAuthStateChanged(async (user) => {
 
+    // Usuário não está logado
     if (!user) {
-
         window.location.href = "login.html";
-
         return;
     }
 
-
     try {
 
-        const adminDoc =
-            await db
-                .collection("admins")
-                .doc(user.uid)
-                .get();
+        console.log("Usuário autenticado:", user.email);
+        console.log("UID:", user.uid);
+
+        // Procura o usuário na coleção admins
+        const adminDoc = await db
+            .collection("admins")
+            .doc(user.uid)
+            .get();
 
 
+        // Não existe cadastro de administrador
         if (!adminDoc.exists) {
 
+            console.error(
+                "Usuário não encontrado na coleção admins."
+            );
+
+            alert(
+                "Acesso negado!\n\n" +
+                "Este usuário está logado, " +
+                "mas não possui permissão de administrador."
+            );
+
             await auth.signOut();
 
-            window.location.href =
-                "login.html";
+            window.location.href = "login.html";
 
             return;
         }
 
 
-        const adminData =
-            adminDoc.data();
-
-
-        if (adminData.ativo === false) {
-
-            await auth.signOut();
-
-            window.location.href =
-                "login.html";
-
-            return;
-        }
-
-
-        /*
-         * Usuário autorizado.
-         * O restante do admin.js pode funcionar.
-         */
+        // Dados do administrador
+        const adminData = adminDoc.data();
 
         console.log(
-            "Administrador autenticado:",
-            user.email
+            "Dados do administrador:",
+            adminData
         );
 
+
+        // Administrador desativado
+        if (adminData.ativo === false) {
+
+            alert(
+                "Seu acesso ao painel administrativo está desativado."
+            );
+
+            await auth.signOut();
+
+            window.location.href = "login.html";
+
+            return;
+        }
+
+
+        // Verifica se realmente possui tipo admin
+        if (adminData.tipo !== "admin") {
+
+            alert(
+                "Acesso negado!\n\n" +
+                "Este usuário não possui permissão de administrador."
+            );
+
+            await auth.signOut();
+
+            window.location.href = "login.html";
+
+            return;
+        }
+
+
+        // ========================================
+        // ADMINISTRADOR AUTORIZADO
+        // ========================================
+
+        console.log("✅ Administrador autorizado!");
+        console.log("Nome:", adminData.nome);
+        console.log("Email:", adminData.email);
+
+
+        // Mostra o nome do administrador no painel
+        const nomeAdmin =
+            document.querySelector(".admin-user strong");
+
+        const emailAdmin =
+            document.querySelector(".admin-user span");
+
+
+        if (nomeAdmin) {
+
+            nomeAdmin.textContent =
+                adminData.nome || "Administrador";
+
+        }
+
+
+        if (emailAdmin) {
+
+            emailAdmin.textContent =
+                adminData.email || user.email;
+
+        }
 
     } catch (error) {
 
@@ -65,10 +122,14 @@ auth.onAuthStateChanged(async (user) => {
             error
         );
 
+        alert(
+            "Não foi possível verificar suas permissões."
+        );
+
         await auth.signOut();
 
-        window.location.href =
-            "login.html";
+        window.location.href = "login.html";
+
     }
 
 });
