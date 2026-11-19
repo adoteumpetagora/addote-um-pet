@@ -301,6 +301,8 @@ body {
 ========================================= */
 
 .btn-adotar {
+    display: inline-block;
+
     width: 104px;
 
     border: none;
@@ -321,6 +323,10 @@ body {
 
     cursor: pointer;
 
+    text-decoration: none;
+
+    text-align: center;
+
     transition: 0.3s;
 }
 
@@ -329,8 +335,6 @@ body {
 
     transform: scale(1.03);
 }
-
-
 /* =========================================
    FOOTER
 ========================================= */
